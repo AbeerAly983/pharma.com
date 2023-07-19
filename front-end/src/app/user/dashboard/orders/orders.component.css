@@ -1,0 +1,26 @@
+.container {
+  margin-top: 100px !important;
+
+}
+
+.img-fluid {
+  width: 150px;
+  height: auto;
+}
+
+.table {
+  text-align: center;
+  vertical-align: baseline;
+  border-color: #046fc188;
+}
+
+.price {
+  display: flex;
+  justify-content: space-evenly !important;
+}
+
+th {
+  font-size: 16px;
+  font-weight: bold;
+
+}

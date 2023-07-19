@@ -1,0 +1,78 @@
+<div>
+  <div class="row m-0">
+    <div class="col-lg-3 col-1 p-0">
+      <app-sidebar-admin></app-sidebar-admin>
+    </div>
+
+    <div class="col-lg-9 col-11 mx-auto ">
+      <div class="container-lg box">
+
+        <div class="head-one d-flex align-items-center justify-content-between">
+          <h3>Products</h3>
+          <div class="add-oc" routerLink="/admin/product/add">Add Product</div>
+        </div>
+        <div class="table-wrapper childs">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Qrcode</th>
+                <th scope="col">Name</th>
+                <th scope="col">Photo</th>
+                <th scope="col">Price</th>
+                <th scope="col">Discount</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Edit</th>
+                <th>
+                  Control
+                </th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let product of allProduct">
+              <tr>
+                <td>
+                  <h6>{{product.id}}</h6>
+                </td>
+                <td>
+                  <h6>{{product.qrCode}}</h6>
+                </td>
+                <td>
+                  <h6>{{product.name}}</h6>
+                </td>
+                <td>
+                  <img src="assets/{{product.photo}}" alt="">
+                </td>
+                <td>
+                  <h6>{{product.price}}</h6>
+                </td>
+                <td>
+                  <div>
+                    <h6 *ngIf="product.discount!==null">{{product.discount.presentage_Discount}}%</h6>
+                    <h6 *ngIf="product.discount==null">0.00%</h6>
+                  </div>
+                </td>
+                <td>
+                  <h6>{{product.quantity}}</h6>
+                </td>
+                <td>
+                  <div>
+                    <a routerLink="/admin/product/edit/{{product.id}}">
+                      <i class="fa-solid fa-pen-to-square"></i></a>
+                  </div>
+                </td>
+                <td>
+                  <div>
+                    <button type="button" class="btn btn-outline-success" *ngIf="product.disable ==1"
+                      (click)="deleteProduct(product.id)">Enable</button>
+                    <button type="button" class="btn btn-outline-danger" *ngIf="product.disable==0"
+                      (click)="deleteProduct(product.id)">Disable</button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

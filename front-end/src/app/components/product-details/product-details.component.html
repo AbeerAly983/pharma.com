@@ -1,0 +1,100 @@
+<app-navbar></app-navbar>
+<div *ngIf="isLoading"
+  class="spinner position-fixed  w-100 h-100 d-flex justify-content-center align-items-center  mt-5 pt-5 bg-white">
+  <!-- show spinner when loading is true -->
+  <app-spinner></app-spinner>
+</div>
+<section class="product-details">
+  <div class="container">
+    <div class="carts-content">
+      <div class="box-Container">
+        <div class="">
+          <div class="box w-100 m-lg-0">
+            <div class="row align-items-center">
+              <div class="col-lg-4 ">
+                <!-- <img class="w-100" src="../../assets/{{ProductDetails.photo[0]}}" alt=""> -->
+                <owl-carousel-o [options]="customOptions">
+                  <ng-container *ngFor="let slide of ProductDetails.photo">
+                    <ng-template carouselSlide>
+                      <img src="../../assets/{{slide}}">
+                    </ng-template>
+                  </ng-container>
+                </owl-carousel-o>
+
+              </div>
+
+              <div class="col-lg-5 ">
+                <div class="product-desc ms-2 ms-md-0">
+                  <h3 class="mb-4">{{ProductDetails.name}} {{ProductDetails.description}} </h3>
+                  <p><span class="text-grey mb-5">Type of product ............</span>
+                    {{ProductDetails['typeOfProduct']}}
+                  </p>
+                  <p><span class="text-grey mb-5">For Whom ....................... </span>
+                    {{ProductDetails.for_whom}}</p>
+                  <p><span class="text-grey mb-5">Purpose ............................</span>
+                    {{ProductDetails.purpose}} </p>
+                  <p><span class="text-grey mb-5">Application Areas .........</span> {{ProductDetails.app_area}}</p>
+                  <p><span class="text-grey mb-5">Brand Country ...............
+                    </span>{{ProductDetails.brandCountry}}</p>
+                </div>
+              </div>
+
+              <div class="total-details bg-white rounded-4 col-lg-3 col-10 ms-4 ps-3 ps-md-0 mx-md-0  my-lg-0 my-4 ">
+                <div class="details px-4  py-4 border rounded-4">
+                  <div class="text-center">
+                    <div *ngIf="ProductDetails.in_stock != 'Not In Stoke'">
+                      <h4 class="w-100">Add To Cart</h4>
+                      <p class="m-0 mt-3 fw-semibold fs-3">
+                        {{ProductDetails.price}} {{ProductDetails.currency| uppercase}}
+                      </p>
+                      <p class="m-0 mt-3 text-grey del fs-5" *ngIf="ProductDetails.presentage_Discount != null">
+                        {{ProductDetails.discount_price}}
+                        ({{ProductDetails.presentage_Discount }}%)</p>
+                      <div class="counter my-3  ">
+                      </div>
+                      <button class="btn btn-primary w-100" (click)="addtoCart(ProductDetails.id)"> Add To Cart
+                      </button>
+                    </div>
+                    <p class="stock mt-3 text-primary text-start">
+                      <a *ngIf="ProductDetails.in_stock == 'Not In Stoke'"><i class="fa-solid fa-xmark"></i></a>
+                      <a *ngIf="ProductDetails.in_stock != 'Not In Stoke'"><i class="fa-solid fa-check"></i></a>
+                      {{ProductDetails.in_stock}}
+                    </p>
+                    <p class="m-0 text-grey text-start">Delivery - next day</p>
+                    <p class="mt-2 text-grey text-start">The Price may be vary depending on the point of delivery </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row pt-5 justify-content-center">
+              <div class="  col-md-10  border-bottom mb-3   ms-2 ms-md-0 border-primary">
+                <div
+                  class="header d-md-flex d-none  justify-content-between border-top border-bottom  border-primary py-3">
+                  <h3>Description </h3>
+                  <h3>Characteristics </h3>
+                  <h3>Ingredients </h3>
+                </div>
+                <p>{{ProductDetails.description}}</p>
+                <h3>Characteristics</h3>
+                <ul>
+                  <li>{{ProductDetails.characteristics}}.</li>
+                  <li>{{ProductDetails.characteristics}}.</li>
+                  <li>{{ProductDetails.characteristics}}.</li>
+                  <li>{{ProductDetails.characteristics}}.</li>
+                  <li>{{ProductDetails.characteristics}}.</li>
+                  <li>{{ProductDetails.characteristics}}.</li>
+                  <li>{{ProductDetails.characteristics}}.</li>
+                </ul>
+                <h3>How to apply:</h3>
+                <p> {{ProductDetails.howToUSe}}</p>
+                <h3>Ingredients</h3>
+                <p> {{ProductDetails.ingredients}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<app-footer></app-footer>

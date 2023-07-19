@@ -1,0 +1,51 @@
+<div>
+  <div class="row m-0">
+    <div class="col-lg-3 col-1 p-0">
+      <app-sidebar-admin></app-sidebar-admin>
+    </div>
+
+    <div class="col-lg-9 col-11 mx-auto ">
+      <div class="container-lg box">
+
+        <div class="head-one d-flex align-items-center justify-content-between">
+          <h3>Order Coordinators</h3>
+          <div class="add-oc" routerLink="/admin/orderCoordinator/add">Add Order Coordinator</div>
+        </div>
+        <div class="table-wrapper childs">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Phone</th>
+                <th>Setting</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let coordinator of coordinators">
+              <tr>
+                <td>
+                  <h6>{{coordinator.first_name}} {{coordinator.last_name}}</h6>
+                </td>
+                <td>
+                  <h6>{{coordinator.email}}</h6>
+                </td>
+                <td>
+                  <h6>{{coordinator.phone}}</h6>
+                </td>
+                <td>
+                  <div class="limt-width">
+                    <button type="button" class="btn btn-outline-success" *ngIf="coordinator.disable==1"
+                      (click)="enable(coordinator.id)">Enable</button>
+                    <button type="button" class="btn btn-outline-danger" *ngIf="coordinator.disable==0"
+                      (click)="disable(coordinator.id)"> Disable</button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,74 @@
+<div>
+  <div class="row m-0">
+    <div class="col-lg-3 col-1 p-0">
+      <app-sidebar-admin></app-sidebar-admin>
+    </div>
+
+    <div class="col-lg-9 col-11 mx-auto ">
+      <div class="container-lg box">
+
+        <div class="head-one d-flex align-items-center justify-content-between">
+          <h3>Announcements</h3>
+          <div class="add-oc" routerLink="/admin/announcement/add">Add Announcement</div>
+        </div>
+
+        <div class="back-edit" routerLink="/admin/announcement">
+          <i class="fa-solid fa-angles-left"></i>
+          <a style="margin-left: 5px;">Back</a>
+        </div>
+        <div class="edit-profile">
+          <h3>Announcement</h3>
+
+
+
+          <form #userForm="ngForm" (ngSubmit)="onsubmit(userForm.value)" class="form" ngNativeValidate>
+
+            <div class="alert alert-success" role="alert" *ngIf="valid">
+              Your changed is updated sucessfully
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Title</label>
+              <input type="text" class="form-control input" name="head" #head="ngModel"
+                [class.is-invalid]="head.invalid && head.touched" [(ngModel)]="announces.head"
+                pattern="[A-Za-z0-9 .,:'\-_]{4,}" required>
+              <div *ngIf="head.errors && head.touched">
+                <small class="text-danger" *ngIf="head.errors?.['required']">
+                  Please enter title
+                </small>
+                <small class="text-danger" *ngIf="head.errors?.['pattern']">
+                  Please enter valid title
+                </small>
+              </div>
+            </div>
+
+
+
+            <div class="mb-3">
+              <label class="form-label">Details</label>
+              <textarea class="form-control input" name="details" #details="ngModel"
+                [class.is-invalid]="details.invalid && details.touched" [(ngModel)]="announces.details"
+                pattern="[A-Za-z0-9 .,:'\-_]{4,}" required></textarea>
+              <div *ngIf="details.errors && details.touched">
+                <small class="text-danger" *ngIf="details.errors?.['required']">
+                  Please enter details
+                </small>
+                <small class="text-danger" *ngIf="details.errors?.['pattern']">
+                  Please enter valid details</small>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Photo</label>
+              <input type="file" class="form-control" accept="image/*" name="photo" #photo="ngModel" [ngModel]
+                (change)="onPhotoSelected($event)">
+            </div>
+
+            <input type="submit" class="form-control" value="Submit">
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

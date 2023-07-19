@@ -1,0 +1,311 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+.parent {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    background-color: #b9c7b9;
+}
+
+.container {
+    height: 680px;
+}
+
+.container .box {
+    height: inherit;
+    box-shadow: 0 0 15px 5px rgb(96 138 92 / 30%);
+    border-radius: 12px;
+    display: flex;
+    overflow: hidden;
+}
+
+.container .box .child1 {
+    background-color: #f9fcf8;
+    width: 50%;
+    padding: 0 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.container .box .child2 {
+    background-color: #d6e6d5;
+    width: 50%;
+    padding: 0 15px;
+    position: relative;
+}
+
+.container .box .child1 .logo {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-evenly;
+    width: 170px;
+    margin: 20px 0 0 0;
+}
+
+.container .box .child1 .logo img {
+    width: 40px;
+    height: 40px;
+}
+
+.container .box .child1 .logo h3 {
+    color: #2c494f;
+    margin-bottom: 0;
+}
+
+.container .box .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container .box .child1 .content {
+    height: 565px;
+}
+
+
+.container .box .signup .content {
+    height: 560px;
+}
+
+.container .box .text {
+    text-align: center;
+    color: #2c494f;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+
+}
+
+.container .box .child2 .text {
+    position: relative;
+    margin-top: 185px;
+    z-index: 1;
+}
+
+.container .box p {
+    font-size: 14px;
+    text-align: center;
+}
+
+.container .box .signup #signupContent p {
+    display: none;
+}
+
+.container .box .child1 .content .inputs {
+    display: flex;
+    flex-direction: column;
+    width: 67%;
+    position: relative;
+
+}
+
+::placeholder {
+    color: #608a5c;
+    font-size: 11px;
+}
+
+
+.container .box .child1 .content .inputs .form-control {
+
+    border: 0.5px solid #b9c7b9;
+    margin-bottom: 15px;
+    color: #608a5c;
+}
+
+
+.container .box .child1 .content .inputs .form-control:focus {
+    outline: none;
+    box-shadow: 0 0 6px rgb(96, 138, 92, 30%);
+}
+
+.container .box .child1 .content .inputs .form-control.is-invalid:focus {
+    outline: none;
+    box-shadow: 0 0 6px rgba(251, 5, 5, 50%);
+}
+
+.container .box .child1 .content .inputs .submit {
+    background-color: #466443;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .3s;
+    padding: 8px;
+    margin-top: 25px;
+}
+
+.container .box .child1 .content .inputs .submit:hover {
+    box-shadow: 0 0 6px rgb(185 199 185 / 50%);
+    background-color: #465745;
+}
+
+.container .box .child1 .content .inputs .submit:active {
+    background-color: #608a5c;
+}
+
+.container .box .child1 .content .inputs label,
+.container .box a {
+    font-size: 14px;
+    color: #2c494f;
+    font-weight: bold;
+    margin-bottom: 8px;
+    text-decoration: none;
+}
+
+.container .box a:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.container .box .child1 .content .inputs .remember-forget {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0 12px 0;
+}
+/* 
+
+#forgetContent .inputs {
+    height: 205px;
+    justify-content: space-between;
+} */
+
+#backLogin {
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+}
+
+/* #backchild1:hover{
+    color: #608a5c;
+} */
+#backLogin:active {
+    color: #608a5c;
+}
+
+/* 
+#resetPassword .content{
+    height: 565px;
+} */
+
+.fa-arrow-left {
+    font-size: 13px;
+    padding: 5px 10px;
+}
+
+.container .box .child2 .shape {
+    position: absolute;
+    border-radius: 12px;
+}
+
+.container .box .child2 .one {
+    left: 0;
+    height: 280px;
+    /* animation: shape-one 3s infinite linear alternate-reverse; */
+}
+
+
+.container .box .child2 .two {
+    bottom: 0;
+    right: 0px;
+    height: 620px;
+    /* animation: shape-two 3s infinite linear alternate-reverse; */
+}
+
+.container .box .child2 .three {
+    top: 0;
+    right: 0;
+    height: 250px;
+}
+
+small {
+    position: relative;
+    bottom: 12px;
+    left: 12px;
+    font-size: 12px;
+}
+
+
+.alert-success {
+    padding: 8px;
+    font-size: 15px;
+}
+
+
+
+#signupContent .alert-success {
+    position: absolute;
+    top: -45px;
+    left: 25px;
+}
+
+
+.input-group-text{
+    font-size: 14px;
+}
+
+
+@keyframes shape-one {
+    from {
+        height: 250px;
+    }
+
+    to {
+        height: 400px;
+    }
+}
+
+@keyframes shape-two {
+    from {
+        height: 620px;
+    }
+
+    to {
+        height: 520px;
+    }
+}
+
+@media (max-width: 992px) {
+    .container .box .child2 {
+        display: none;
+    }
+
+    .container .box .child1 {
+        width: 100%;
+    }
+
+
+    .container .box .signup #signupContent p {
+        display: block;
+    }
+
+    .container .box .child1 .content .inputs {
+        width: 80%;
+    }
+
+    .container .box {
+        margin: 0;
+    }
+
+}
+
+@media (max-width: 576px) {
+
+    .container .box .child1 .content .inputs {
+        width: 90%;
+
+    }
+
+}
+
+@media (max-width:360px) {
+
+    .container .box .child1 .content .inputs label,
+    .container .box a {
+        /* flex-direction: column; */
+        font-size: 12px;
+    }
+}

@@ -1,0 +1,164 @@
+<div class="sidebar">
+  <div class="title">
+    <div class="d-flex align-items-center">
+      <img class="" src="../../assets/login-imgs/logo.png" alt="" />
+      <h3 class="title-pharma">P H.com</h3>
+    </div>
+    <div class="navCloseBtn" (click)="close()">
+      <i class="fa-solid fa-xmark"></i>
+    </div>
+  </div>
+  <ul class="nav-list">
+
+    <li class="profile" routerLink="/owner/profile" routerLinkActive="bg-red ">
+      <a class="nav-link">
+        <i class="fa-solid fa-circle-user icon" routerLinkActive="bg-white"></i>
+        <span class="link-name" routerLinkActive="text-">Profile</span>
+      </a>
+    </li>
+
+    <li class="profile" routerLink="/owner/charts" routerLinkActive="bg-red ">
+      <a class="nav-link">
+        <i class="fa-solid fa-chart-column icon" routerLinkActive="bg-red"></i>
+        <span class="link-name" routerLinkActive="text-">Charts</span>
+      </a>
+    </li>
+
+    <li routerLink="/owner/notification" routerLinkActive="bg-red ">
+      <a class="nav-link">
+        <i class="fa-solid fa-bell icon"></i>
+        <span class="badge bg-danger text-white position-absolute top-0 end-0 rounded-circle"
+          *ngIf="(reorder.length>0)||(expire.length>0)"> {{expire.length + reorder.length}}</span>
+        <span class="link-name">
+          Notification</span>
+      </a>
+    </li>
+
+    <li class="profile" routerLink="/owner/addAdmin" routerLinkActive="bg-red ">
+      <a class="nav-link">
+        <i class="fa-solid fa-user-plus icon"></i>
+        <span class="link-name" routerLinkActive="text-">Add Admin</span>
+      </a>
+    </li>
+
+    <li routerLink="/owner/Admins" routerLinkActive="bg-red ">
+      <a class="nav-link">
+        <i class="fa-solid fa-users-rectangle icon"></i>
+        <span class="link-name">Admins</span>
+      </a>
+    </li>
+
+    <li routerLink="/owner/orderCoordinators" routerLinkActive="bg-red ">
+      <a class="nav-link">
+        <i class="fa-solid fa-users-gear icon"></i>
+        <span class="link-name">Order Coordinators</span>
+      </a>
+    </li>
+
+    <li routerLink="/owner/Accountants" routerLinkActive="bg-red ">
+      <a class="nav-link">
+        <i class="fa-solid fa-elevator icon"></i>
+        <span class="link-name">Accountants</span>
+      </a>
+    </li>
+
+    <li routerLink="/owner/users" routerLinkActive="bg-red ">
+      <a class="nav-link">
+        <i class="fa-solid fa-users icon"></i>
+        <span class="link-name">Users</span>
+      </a>
+    </li>
+
+    <li routerLink="/owner/newUsers" routerLinkActive="bg-red ">
+      <a class="nav-link">
+        <i class="fa-solid fa-user-clock icon"></i>
+        <span class="link-name">New Users</span>
+      </a>
+    </li>
+
+    <li routerLink="/owner/Laboratories" routerLinkActive="bg-red ">
+      <a class="nav-link">
+        <i class="fa-solid fa-flask icon"></i>
+        <span class="link-name">Laboratories</span>
+      </a>
+    </li>
+
+    <li routerLink="/owner/Doctors" routerLinkActive="bg-red ">
+      <a class="nav-link">
+        <i class="fa-solid fa-user-doctor icon"></i>
+        <span class="link-name">Doctors</span>
+      </a>
+    </li>
+
+    <li routerLink="/owner/Products" routerLinkActive="bg-red ">
+      <a class="nav-link">
+        <i class="fa-solid fa-cart-shopping icon"></i>
+        <span class="link-name">Products</span>
+      </a>
+    </li>
+
+    <li routerLink="/owner/Orders" routerLinkActive="bg-red ">
+      <a class="nav-link">
+        <i class="fa-solid fa-chart-simple icon"></i>
+        <span class="link-name">Orders</span>
+      </a>
+    </li>
+
+    <li routerLink="/owner/deliveredOrders" routerLinkActive="bg-red ">
+      <a class="nav-link">
+        <i class="fa-solid fa-chart-simple icon"></i>
+        <span class="link-name">Delivered Orders</span>
+      </a>
+    </li>
+
+    <li routerLink="/owner/notdeliveredOrders" routerLinkActive="bg-red ">
+      <a class="nav-link">
+        <i class="fa-solid fa-chart-simple icon"></i>
+        <span class="link-name">Not Delivered Orders</span>
+      </a>
+    </li>
+    <li routerLink="/owner/canceledOrders" routerLinkActive="bg-red ">
+      <a class="nav-link">
+        <i class="fa-solid fa-ban icon"></i>
+        <span class="link-name">Canceled Order</span>
+      </a>
+    </li>
+
+    <li routerLink="/owner/News" routerLinkActive="bg-red ">
+      <a class="nav-link">
+        <i class="fa-solid fa-newspaper icon"></i>
+        <span class="link-name">News</span>
+      </a>
+    </li>
+
+
+    <li routerLink="/owner/liveSessions" routerLinkActive="bg-red ">
+      <a class="nav-link">
+        <i class="fa-solid fa-video icon"></i>
+        <span class="link-name">Live Sessions</span>
+      </a>
+    </li>
+
+
+
+    <li (click)="logOut()">
+      <a class="nav-link">
+        <i class="fa-solid fa-angles-left icon"></i>
+        <span class="link-name">Log Out</span>
+      </a>
+    </li>
+
+  </ul>
+
+</div>
+<div class="click" (click)="droplist()">
+  <i class="fa-solid fa-circle-chevron-left"></i>
+</div>
+
+
+
+
+<!-- discount product
+dose calculators
+reordered
+expired -->

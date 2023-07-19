@@ -1,0 +1,60 @@
+<div>
+  <div class="row m-0">
+    <div class="col-lg-3 col-1 p-0">
+      <app-sidebar-admin></app-sidebar-admin>
+    </div>
+
+    <div class="col-lg-9 col-11 mx-auto ">
+      <div class="container-lg box">
+
+        <div class="head-one d-flex align-items-center justify-content-between">
+          <h3>Dose-Calculator</h3>
+          <div class="add-oc" routerLink="/admin/doseCalculator/add">Add Dose-Calculator</div>
+        </div>
+        <div class="table-wrapper childs">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Product Name</th>
+                <th scope="col">Composition</th>
+                <th>Setting</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let calc of calculator">
+              <tr>
+                <td>
+                  <h6>{{calc.id}}</h6>
+                </td>
+                <td>
+                  <div>
+                    <h6>{{calc.ProductName}}</h6>
+                  </div>
+                </td>
+                <td>
+                  <h6>{{calc.composition}}</h6>
+                </td>
+                <td>
+                  <div>
+                    <a routerLink="/admin/doseCalculator/edit/{{calc.id}}"><i class="fa-solid fa-pen-to-square"></i></a>
+                    <a (click)="valid=true; idCheckAlert=calc.id"><i class="fa-solid fa-trash"></i></a>
+                  </div>
+                </td>
+              </tr>
+              <div class="alert alert-danger" role="alert" *ngIf="valid && idCheckAlert==calc.id">
+                <p>Are you sure, you want to delete item?</p>
+                <button type="button" class="btn btn-outline-success" (click)="valid=false">Cancel</button>
+                <button type="button" class="btn btn-outline-danger"
+                  (click)="deleteProductCase(calc.id,calc)">OK</button>
+              </div>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </div>
+</div>

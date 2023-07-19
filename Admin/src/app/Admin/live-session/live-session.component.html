@@ -1,0 +1,59 @@
+<div>
+  <div class="row m-0">
+    <div class="col-lg-3 col-1 p-0">
+      <app-sidebar-admin></app-sidebar-admin>
+    </div>
+
+    <div class="col-lg-9 col-11 mx-auto ">
+      <div class="container-lg box">
+
+        <div class="head-one d-flex align-items-center justify-content-between">
+          <h3>Live Sessions</h3>
+          <div class="add-oc" routerLink="/admin/session/add">Add Live-Session</div>
+        </div>
+
+        <div class="table-wrapper childs">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Url</th>
+                <th scope="col">Control</th>
+                <th>Setting</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let session of session">
+              <tr>
+                <td>
+                  <h6>{{session.title}}</h6>
+                </td>
+                <td>
+                  <h6 class="limit-width text-hidden"><a href="{{session.url}}">{{session.url}}</a></h6>
+                </td>
+                <td>
+                  <div>
+                    <a routerLink="/admin/session/edit/{{session.id}}"><i class="fa-solid fa-pen-to-square"></i></a>
+                    <a routerLink="/admin/session/comment/{{session.id}}"><i class="fa-solid fa-comment"></i></a>
+                  </div>
+
+                </td>
+                <td>
+                  <div>
+                    <button type="button" *ngIf="session.disable == 1" class="btn btn-outline-success"
+                      (click)="enable(session.id)">Enable</button>
+                    <button type="button" *ngIf="session.disable == 0" class="btn btn-outline-danger"
+                      (click)="disable(session.id)">
+                      Disable</button>
+                  </div>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>

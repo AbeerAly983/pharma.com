@@ -1,0 +1,52 @@
+<div>
+  <div class="row m-0">
+    <div class="col-lg-3 col-1 p-0">
+      <app-sidebar-admin></app-sidebar-admin>
+    </div>
+
+    <div class="col-lg-9 col-11 mx-auto ">
+      <div class="container-lg box">
+
+        <div class="head-one d-flex align-items-center justify-content-between">
+          <h3>Accountants</h3>
+          <div class="add-oc" routerLink="/admin/accountant/add">Add Accountant</div>
+        </div>
+
+        <div class="table-wrapper childs">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Phone</th>
+                <th>Setting</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let accountant of accountants">
+              <tr>
+                <td>
+                  <h6>{{accountant.first_name}} {{accountant.last_name}}</h6>
+                </td>
+                <td>
+                  <h6>{{accountant.email}}</h6>
+                </td>
+                <td>
+                  <h6>{{accountant.phone}}</h6>
+                </td>
+                <td>
+                  <div>
+                    <button type="button" *ngIf="accountant.disable == 1" class="btn btn-outline-success"
+                      (click)="enable(accountant.id)">Enable</button>
+                    <button type="button" *ngIf="accountant.disable == 0" class="btn btn-outline-danger"
+                      (click)="disable(accountant.id)">
+                      Disable</button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<!-- Navbar -->
+<app-navbar></app-navbar>
+<div  *ngIf="isLoading"  class="spinner position-fixed  w-100 h-100 d-flex justify-content-center align-items-center  mt-5 pt-5 bg-white"> <!-- show spinner when loading is true -->
+  <app-spinner></app-spinner>
+</div>
+<!-- main-page -->
+<div class="container">
+  <div class="header"><h2 class="title">All Promotions</h2></div>
+  <div class="product-container">
+    <div class="box" *ngFor="let discount of allpromotions">
+      <app-promotion [productDiscount]="discount"  [addToWishList]="wishList.indexOf(discount.id) >=0"> </app-promotion>
+    </div>
+  </div>
+</div>
+
+<!-- footer -->
+<app-footer></app-footer>

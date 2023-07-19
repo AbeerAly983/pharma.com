@@ -1,0 +1,57 @@
+<div>
+  <div class="row m-0">
+    <div class="col-lg-3 col-1 p-0">
+      <app-sidebar-admin></app-sidebar-admin>
+    </div>
+
+    <div class="col-lg-9 col-11 mx-auto ">
+      <div class="container-lg box">
+        <div class="head-one d-flex align-items-center justify-content-between">
+          <h3>Announcements</h3>
+          <div class="add-oc" routerLink="/admin/announcement/add">Add Announcement</div>
+        </div>
+
+        <div class="table-wrapper childs">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Head</th>
+                <th scope="col">Photo</th>
+                <th scope="col">Details</th>
+                <th>Setting</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let announce of announcements">
+              <tr>
+                <td>
+                  <h6>{{announce.head}}</h6>
+                </td>
+                <td>
+                  <img src="assets/{{announce.photo}}" alt="">
+                </td>
+                <td>
+                  <h6 class="limit-width text-hidden">{{announce.details}}</h6>
+                </td>
+                <td>
+                  <div>
+                    <a (click)="valid=true; idCheckAlert=announce.id"><i class="fa-solid fa-trash mx-2"></i></a>
+                    <a routerLink="/admin/announcement/edit/{{announce.id}}"><i
+                        class="fa-solid fa-pen-to-square mx-2"></i></a>
+                  </div>
+                </td>
+              </tr>
+
+              <div class="alert alert-danger" role="alert" *ngIf="valid && idCheckAlert==announce.id">
+                <p>Are you sure, you want to delete item?</p>
+                <button type="button" class="btn btn-outline-success" (click)="valid=false">Cancel</button>
+                <button type="button" class="btn btn-outline-danger" (click)="deleteAnnounce(announce.id)">OK</button>
+              </div>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

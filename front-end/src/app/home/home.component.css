@@ -1,0 +1,240 @@
+/* start announce */
+.announce {
+  width: 90%;
+  margin-top: 75px !important;
+}
+
+.announce .img-1 {
+  background-image: url(../../assets/Announcements/23-02-10_01-59-05-395.jpg);
+}
+
+.announce .img-2 {
+  background-image: url(../../assets/Announcements/23-02-10_01-59-05-395.jpg);
+  background-color: var(--main-color) !important;
+}
+
+.announce .img-3 {
+  background-image: url(../../assets/Announcements/23-02-10_02-05-56-662.jpg);
+}
+
+.announce .img-4 {
+  background-image: url(../../assets/Announcements/23-02-10_02-35-23-309.jpg);
+}
+
+.announce .img-5 {
+  background-image: url(../../assets/Announcements/23-02-10_03-06-29-176.jpg);
+}
+
+.carousel {
+  height: 380px !important;
+}
+
+.announce .img-1,
+.announce .img-2,
+.announce .img-3,
+.announce .img-4,
+.announce .img-5 {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  width: 100%;
+  height: 345px;
+  border: 2px solid #406667;
+
+}
+
+/* buttons caresoul */
+.announce .carousel-indicators [data-bs-target] {
+  width: 8px;
+  height: 8px;
+  text-indent: 0;
+  border-radius: 50%;
+}
+
+.announce .carousel-indicators .active {
+  width: 10px;
+  height: 10px;
+  z-index: 4;
+  background-color: #2287D0 !important;
+}
+
+.announce .carousel-indicators [data-bs-target] {
+  background-color: #9b9b9b;
+  margin-top: -40px;
+}
+
+.right-side {
+  min-height: 280px;
+}
+
+.sale-one {
+  background-image: url(../../assets/imgs/announce-1.1.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: 100% 100%;
+  height: 30%;
+  background-color: rgb(214, 230, 213);
+  border: 2px solid var(--main-color);
+}
+
+.announce-content p {
+  font-size: 14px;
+  color: gray !important;
+}
+
+.sale-one .announce-content span {
+  color: rgb(163, 163, 163);
+  font-weight: 400;
+}
+
+.sale-two {
+  background-image: url(../../assets/imgs/img2.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: 100% 100%;
+  height: 40%;
+  border: 2px solid var(--main-color);
+  background-color: #d6e6d5;
+}
+
+.sale-two .announce-content p {
+  font-size: .9rem;
+  color: black !important;
+  font-weight: 500;
+}
+
+.sale-two .btnSearch {
+  margin-top: 10px;
+  padding: 5px 20px;
+}
+
+.sale-three {
+  height: 27%;
+  background-color: rgb(224, 240, 240);
+}
+
+.sale-three .percentage span {
+  font-size: 3.5rem;
+  font-weight: bold;
+  color: rgb(66, 163, 235);
+}
+
+.sale-three .discount span {
+  font-size: 15px;
+  color: rgb(163, 163, 163);
+}
+
+.sale-three .discount p {
+  font-weight: 500;
+}
+
+/* end announce */
+/* start questions */
+.questions {
+  background-color: var(--main-color);
+}
+
+.questions .ques-box {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.ques-box .ques-icon {
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  color: #4a98f7;
+  transform: translateY(-50%);
+  font-size: 20px;
+  color: gray !important;
+}
+
+.ques-box input {
+  height: 100%;
+  width: 100%;
+  border: none;
+  outline: none;
+  border-radius: 6px;
+  background-color: #fff;
+  padding: 7px 15px 7px 45px;
+  border-top-left-radius: 50rem !important;
+  border-bottom-left-radius: 50rem !important;
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  border: 2px solid #2287D0;
+}
+
+.questions div.btn {
+  border-top-right-radius: 50rem !important;
+  border-bottom-right-radius: 50rem !important;
+}
+
+.questions p {
+  font-size: 20px;
+  color: rgb(112, 110, 110);
+}
+
+/* end questions */
+/* start information */
+.information i {
+  color: rgb(156, 190, 158);
+}
+
+/* end information */
+/* start contact */
+p.desc {
+  font-size: 25px;
+  line-height: 32px;
+  color: #282828 !important;
+  font-weight: 700 !important;
+}
+
+.information .contact-info h6 {
+  font-size: 18px;
+  color: #282828;
+  font-weight: bold;
+  transition: color .5s;
+  -webkit-transition: color .5s;
+  -moz-transition: color .5s;
+  -ms-transition: color .5s;
+  -o-transition: color .5s;
+  -o-transition: color .5s;
+}
+
+.information .contact-info:hover h6 {
+  color: #406667;
+}
+
+.information .contact-info span {
+  color: #666;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+}
+
+.info .contact-icon {
+  color: #406667 !important;
+}
+
+/* end contact */
+
+.success-message {
+  position: absolute !important;
+  top: 20%  !important;
+  left: 50%  !important;
+  transform: translateX(-50%)  !important;
+  padding: 10px  !important;
+  border-radius: 5px  !important;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px  !important;
+}
+.product {
+  text-align: center;
+  transition: none !important;
+  border:none !important;
+  border-radius:none !important;
+  box-shadow: none !important;
+}
+.product:hover
+{
+    box-shadow:none !important;
+    border:none !important;
+}

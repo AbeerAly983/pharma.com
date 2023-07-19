@@ -1,0 +1,33 @@
+nav{
+  background-color: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+a , .nav-link {
+  cursor: pointer;
+}
+nav .navbar-brand {
+  font-size: 22px;
+  font-weight: 700;
+  margin-left: -30px;
+  color: #406667;
+}
+nav .nav-link {
+  font-weight: bold;
+}
+nav .shopping-icon,
+nav .user-icon ,
+nav .heart-icon  {
+  color: #406667;
+  font-size: 20px;
+  cursor: pointer;
+  margin-right: 20px;
+}
+nav .nav-links {
+  display: flex;
+  align-items: center;
+}
+nav ,
+nav .navbar-nav {
+  display: flex;
+  align-items: center;
+}

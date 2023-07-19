@@ -1,0 +1,77 @@
+<div class="all">
+  <div class="row m-0">
+    <div class="col-lg-3 col-1 p-0">
+      <app-sidebar-coord></app-sidebar-coord>
+    </div>
+
+    <div class="col-lg-9 col-11 mx-auto ">
+      <div class="container-lg box">
+
+        <div class="head-one d-flex align-items-center justify-content-between">
+          <h3>Orders</h3>
+          <div class="add-oc" (click)="shipOrders()">Ship All</div>
+
+        </div>
+
+        <div class="table-wrapper childs">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Order-ID</th>
+                <th scope="col">User Name</th>
+                <th scope="col">Product Name</th>
+                <th scope="col">QR Code</th>
+                <th scope="col">Photo</th>
+                <th scope="col">phone</th>
+                <th scope="col">city</th>
+                <th scope="col">Street</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Price</th>
+                <th>Redirect</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let order of allOrders">
+              <tr>
+                <td>
+                  <h6>{{order.order_id}}</h6>
+                </td>
+                <td>
+                  <h6>{{order.user_name}}</h6>
+                </td>
+                <td>
+                  <h6>{{order.product_name}}</h6>
+                </td>
+                <td>
+                  <h6>{{order.qrCode}}</h6>
+                </td>
+                <td>
+                  <img src="../../../../assets/{{order.photo}}">
+                </td>
+                <td>
+                  <h6>{{order.phone}}</h6>
+                </td>
+                <td>
+                  <h6>{{order.city}}</h6>
+                </td>
+                <td>
+                  <h6>{{order.street}}</h6>
+                </td>
+                <td>
+                  <h6>{{order.quantity}}</h6>
+                </td>
+                <td>
+                  <h6>{{order.price}}</h6>
+                </td>
+                <td>
+                  <h6><button type="button" class="btn btn-outline-success"
+                      (click)="shipOneOrder(order.order_id)">ship</button>
+                  </h6>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

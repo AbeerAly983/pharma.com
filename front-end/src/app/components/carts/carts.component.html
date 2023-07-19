@@ -1,0 +1,113 @@
+<!-- navbar -->
+<app-navbar></app-navbar>
+<!-- cart -->
+<div *ngIf="isLoading"
+  class="spinner position-fixed  w-100 h-100 d-flex justify-content-center align-items-center  mt-5 pt-5 bg-white">
+  <!-- show spinner when loading is true -->
+  <app-spinner></app-spinner>
+</div>
+<section class="carts">
+  <div class="container">
+    <!-- if cart is empty -->
+    <div *ngIf="cartList.numOfCartItems === 0" class="text-center fw-bold ">
+      <img class="w-100 " src="../../../assets/notFound/undraw_empty_re_opql.svg" height="550" alt="">
+    </div>
+    <div class="carts-content" *ngIf="cartList.numOfCartItems > 0">
+      <div class="cart-header d-flex justify-content-between align-items-center">
+        <h3>Cart contains {{ cartList.numOfCartItems }} items</h3>
+        <span class=" text-center go-cat" routerLink="/catalog">
+          Go to catalog<i class="fa-solid fa-chevron-right mx-2"></i>
+        </span>
+      </div>
+      <div class="box-Container d-flex flex-wrap justify-content-md-end flex-md-nowrap mt-4">
+        <div class="d-flex d-xl-inline-flex">
+          <div class="box w-100 m-lg-0">
+            <div *ngFor="let cart of cartList.data">
+              <div class="row g-0 mb-3">
+                <div class="row col-11 g-0 align-items-center">
+                  <div class="col-xl-4 col-6">
+                    <div class="img">
+                      <img class="w-100 rounded-4" src="../../assets/{{ cart.image }}" alt="" />
+                    </div>
+                  </div>
+                  <div class="col-xl-4 col-6 mt-3">
+                    <h6>
+                      LA ROCHE-POSAY effaclar ultra duo (+) Concentrated face
+                      serum, 30 ml
+                    </h6>
+                    <p class="cart-desc  m-0">
+                      Production:L'Oreal S.A., France
+                    </p>
+                  </div>
+                  <div class="col-xl-4 mt-xl-3">
+                    <div class="row g-0">
+                      <div class="col-5 price">
+                        <div class="quantity border rounded-5 px-1 mb-2">
+                          <button class="btn btn-hover" (click)="decreaseCounter(cart.id)">
+                            <i class="fa-solid fa-minus"></i>
+                          </button>
+                          <span class="qunt">{{ cart.quantity }}</span>
+                          <button class="btn btn-hover" (click)="increaseCounter(cart.id)">
+                            <i class="fa-solid fa-plus"></i>
+                          </button>
+                        </div>
+                      </div>
+                      <div class="col-7 d-flex justify-content-evenly position-relative">
+                        <div class="">
+                          <p class="fs-5">{{ cart.price }} L.E</p>
+                          <p class="old-price text-grey"> {{cart.price_before_discount}} L.E (-{{cart.presentage}}%)</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="icons d-flex flex-column align-self-start col-1">
+                  <button class="btn border-0 border-none btn-hover" (click)="deleteFromCart(cart.id)">
+                    <i class="fa-solid fa-xmark mb-2 fa-xl cancel"> </i>
+                  </button>
+                </div>
+                <hr class="border-primary" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="total-details bg-white rounded-4 col-lg-3 w-25 d-lg-block col ms-md-5 mb-5">
+          <div class="details px-4 py-4 border rounded-4">
+            <div class="ms-3">
+              <h3>Your Shopping Cart</h3>
+              <p class="">Goods: {{ length }} pcs</p>
+              <div class="radio">
+                <input type="radio" name="deliver" value="Self-delivery" />
+                Self-delivery<br />
+                <input type="radio" name="deliver" value="Delivery" />
+                Delivery<br />
+              </div>
+              <p class="address">Add a delivery address</p>
+              <p class="Price">Delivery Price: 20.00 L.E</p>
+            </div>
+            <div class="promocode-box position-relative d-flex justify-content-center">
+              <input type="text" placeholder="Enter PromoCode" />
+              <div class="btn btn-primary" type="button">
+                <i class="fa-solid fa-arrow-right"></i>
+              </div>
+            </div>
+            <hr />
+            <p class="text-center h4" *ngIf="cartList.numOfCartItems!=0">Total: {{ cartList.total }}</p>
+            <button class="btn btn-primary rounded-pill w-75 position-relative start-50 mt-3"
+              *ngIf="cartList.numOfCartItems!=0" routerLink="/cart/checkout">
+              Buy
+            </button>
+            <br />
+            <button class="btn btn-primary rounded-pill w-75 position-relative start-50 my-3"
+              (click)="deleteAllFromCart()" *ngIf="cartList.numOfCartItems!=0">
+              Delete All
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- footer -->
+<app-footer></app-footer>

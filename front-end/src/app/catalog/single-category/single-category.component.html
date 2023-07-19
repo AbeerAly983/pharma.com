@@ -1,0 +1,48 @@
+<div class="slider position-relative">
+  <div>
+    <img src="assets/{{ product.photo }}" alt="photo" routerLink="/details/{{ product.id }}" />
+    <div class="item ">
+      <div class="full" *ngIf="addToWishList" (click)="deleteFromWishList(product.id); ">
+        <i class="fa-solid fa-heart"> </i>
+      </div>
+      <div class="empty" *ngIf="!addToWishList" (click)="addtoWishList(product.id);">
+        <i class="fa-regular fa-heart"> </i>
+      </div>
+    </div>
+    <div class="dicount" *ngIf="product.discount !== null">
+      <label>- {{ product.discount.presentage_Discount }}%</label>
+    </div>
+    <div class="dicount" *ngIf="product.discount === null">
+      <label>- 0 %</label>
+    </div>
+
+    <div class="details" routerLink="/details/{{ product.id }}">
+      <h3 class="name">{{ product.name }}</h3>
+      <p class="description">{{ product.description }}</p>
+      <div class="code-rate">
+        <div class="discountclass" *ngIf="product.discount !== null">
+          <h5 class="price">{{ product.discount.discount_price }}</h5>
+          <h5 class="pricedel">
+            <del>{{ product.price }}</del>
+          </h5>
+        </div>
+        <div *ngIf="product.discount === null">
+          <h5 class="price">{{ product.price }}</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="quantity">
+    <button class="add" (click)="addtoCart(product.id)">Add To Cart</button>
+  </div>
+  <div *ngIf="showSuccessMessage" class="success-message text-main bg-white border-primary">
+    Product added to cart!
+  </div>
+  <div *ngIf="showAddMessage" class="success-message text-main bg-white border-primary">
+    Product added to WishList!
+  </div>
+  <div *ngIf="showDeleteMessage" class="success-message text-main bg-white border-primary">
+    Product deleted from WishList!
+  </div>
+
+</div>

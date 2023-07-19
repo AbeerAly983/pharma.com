@@ -1,0 +1,136 @@
+<div>
+  <div class="row m-0">
+    <div class="col-lg-3 col-1 p-0">
+      <app-sidebar-admin></app-sidebar-admin>
+    </div>
+
+    <div class="col-lg-9 col-11 mx-auto ">
+      <div class="container-lg box">
+
+        <div class="head-one d-flex align-items-center justify-content-between">
+          <h3>Product Dose-Calculator</h3>
+        </div>
+
+        <div class="back-edit" routerLink="/admin/doseCalculator/add">
+          <i class="fa-solid fa-angles-left"></i>
+          <a style="margin-left: 5px;">Back</a>
+        </div>
+
+        <div class="add-product">
+          <h3>Product Dose-Calculator</h3>
+
+
+          <form #userForm="ngForm" (ngSubmit)="onsubmit(userForm.value)" class="form" ngNativeValidate>
+
+            <div class="alert alert-success" role="alert" *ngIf="valid">
+              Your dose is added sucessfully
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Indication-ID</label>
+              <select class="form-control input" name="indication_id" #indication_id="ngModel" [ngModel] id="mySelect"
+                required>
+                <option>Choose Indication-ID</option>
+                <option *ngFor="let indicate of productIndicate">
+                  <p>{{indicate.id}}</p>
+                </option>
+              </select>
+              <div *ngIf="indication_id.errors && indication_id.touched">
+                <small class="text-danger" *ngIf="indication_id.errors?.['required']">
+                  Please enter indication id
+                </small>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Minimum Age</label>
+              <input type="text" class="form-control input" name="min_age" #min_age="ngModel" maxlength="3"
+                pattern="\d+" [class.is-invalid]="min_age.invalid && min_age.touched" [ngModel] required>
+
+              <div *ngIf="min_age.errors && min_age.touched">
+                <small class="text-danger" *ngIf="min_age.errors?.['required']">
+                  Please enter min_age
+                </small>
+                <small class="text-danger" *ngIf="min_age.errors?.['pattern']">
+                  Must contain only numbers
+                </small>
+                <small class="text-danger" *ngIf="min_age.errors?.['maxlength']">
+                  Please enter valid age
+                </small>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Maximum Age</label>
+              <input type="text" class="form-control input" name="max_age" #max_age="ngModel" maxlength="3"
+                pattern="\d+" [class.is-invalid]="max_age.invalid && max_age.touched" [ngModel] required>
+
+              <div *ngIf="max_age.errors && max_age.touched">
+                <small class="text-danger" *ngIf="max_age.errors?.['required']">
+                  Please enter max_age
+                </small>
+                <small class="text-danger" *ngIf="max_age.errors?.['pattern']">
+                  Must contain only numbers
+                </small>
+                <small class="text-danger" *ngIf="max_age.errors?.['maxlength']">
+                  Please enter valid age
+                </small>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Minimum Weight</label>
+              <input type="text" class="form-control input" name="min_weight" #min_weight="ngModel" minlength="2"
+                maxlength="3" pattern="\d+" [class.is-invalid]="min_weight.invalid && min_weight.touched" [ngModel]
+                required>
+
+              <div *ngIf="min_weight.errors && min_weight.touched">
+                <small class="text-danger" *ngIf="min_weight.errors?.['required']">
+                  Please enter min_weight
+                </small>
+                <small class="text-danger" *ngIf="min_weight.errors?.['pattern']">
+                  Must contain only numbers
+                </small>
+                <small class="text-danger" *ngIf="min_weight.errors?.['minlength']">
+                  Must contain at least 2 character
+                </small>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Maximum Weight</label>
+              <input type="text" class="form-control input" name="max_weight" #max_weight="ngModel" minlength="2"
+                maxlength="3" pattern="\d+" [class.is-invalid]="max_weight.invalid && max_weight.touched" [ngModel]
+                required>
+
+              <div *ngIf="max_weight.errors && max_weight.touched">
+                <small class="text-danger" *ngIf="max_weight.errors?.['required']">
+                  Please enter max_weight
+                </small>
+                <small class="text-danger" *ngIf="max_weight.errors?.['pattern']">
+                  Must contain only numbers
+                </small>
+                <small class="text-danger" *ngIf="max_weight.errors?.['minlength']">
+                  Must contain at least 2 character
+                </small>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Dose</label>
+              <textarea type="text" class="form-control input" name="dose" #dose="ngModel" minlength="2"
+                [class.is-invalid]="dose.invalid && dose.touched" [ngModel] required>
+              </textarea>
+              <div *ngIf="dose.errors && dose.touched">
+                <small class="text-danger" *ngIf="dose.errors?.['required']">
+                  Please enter dose
+                </small>
+                <small class="text-danger" *ngIf="dose.errors?.['minlength']">
+                  Must contain at least 2 character
+                </small>
+              </div>
+            </div>
+            <input type="submit" class="form-control" value="Submit">
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

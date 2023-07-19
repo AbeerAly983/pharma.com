@@ -1,0 +1,13 @@
+#verifyContent .form-control {
+    text-align: center;
+}
+
+#backSignup {
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.cursor {
+    cursor: pointer;
+}

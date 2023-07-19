@@ -1,0 +1,114 @@
+
+/* You can add global styles to this file, and also import other style files */
+:root {
+  --main-color: rgb( 235, 242, 246 );
+  --white-color: #FFF;
+  --grey-color : rgb(134, 134, 134);
+  --small-font : 16px !important ;
+  --text-main : rgb(83,115,253);
+  --shadow: rgba(145,158,171,.2) 0px 2px 4px -1px,rgba(145,158,171,.14) 0px 4px 5px 0px,rgba(145,158,171,.12) 0px 1px 10px 0px;
+  --rating-color:#ffc908;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+a{
+  cursor: pointer;
+}
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: 'Montserrat', sans - serif;;
+  font-weight: 400;
+  line-height: 1.6;
+}
+.rating-color
+{
+    color: var(--rating-color);
+}
+.parent .owl-next,
+.parent .owl-prev {
+  background-color: white !important;
+  color: black !important;
+  border-radius: 40% !important;
+  position: absolute;
+  top: 50%;
+  transition: all 0.2s ease;
+}
+
+.parent .owl-next {
+  right: -40px;
+}
+
+.parent .owl-prev {
+  left: -30px;
+}
+
+.parent .owl-next i,
+.parent .owl-prev i {
+  font-size: 30px;
+}
+
+.parent .owl-next:hover,
+.parent .owl-prev:hover {
+  box-shadow: 0px 0px 5px 0px rgb(0 0 0 / 18%);
+}
+.bg-grey {
+ background-color: var(--grey-color);
+}
+.text-grey {
+  color: var(--grey-color);
+ }
+.small-font{
+  font-size: var(--small-font) !important;
+}
+
+.text-main
+{
+    color: var(--text-main) !important;
+}
+.text-light{
+  color: var(--main-color) !important;
+}
+.bg-main
+{
+    background-color: var(--text-main) !important;
+}
+.product {
+  transition: box-shadow 0.5s ,border 0.5s;
+  border: solid 1px #fff;
+  border-radius: 10px;
+  box-shadow: 3px 0 6px -4px rgb(0 0 0 / 6%), -3px 0 6px -4px rgb(0 0 0 / 6%);
+}
+.product .btn
+{
+    transition: transform .5s , opacity 1s;
+    transform: translateY(100%);
+    opacity: 0;
+}
+.product:hover .btn
+{
+    opacity: 1;
+    transform: translateY(0%);
+}
+
+.product:hover
+{
+    box-shadow: var(--shadow);
+    border: solid 1px var(--text-main);
+}
+.border-main {
+  border: 1px solid var(--text-main);
+}
+.img img {
+  border-radius: 10px;
+}
+.spinner {
+  z-index: 99999999999999999 !important;
+}

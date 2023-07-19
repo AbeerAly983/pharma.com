@@ -1,0 +1,286 @@
+<div class="">
+  <div class="row m-0 ">
+    <div class="col-lg-3 col-1 p-0">
+      <app-sidebar-owner></app-sidebar-owner>
+    </div>
+
+    <div class="col-lg-9 col-11 mx-auto ">
+      <div class="container-lg box">
+
+        <div class="head-one d-flex align-items-center justify-content-between">
+          <h3>Products Analytics</h3>
+        </div>
+
+        <div class="parent">
+
+          <div class="child d-flex flex-column" (click)="showDoctorAll()">
+            <div class="content">{{productStats.total_products}}</div>
+            <div class="icon">
+              Total Number of Doctors
+            </div>
+          </div>
+
+          <div class="child d-flex flex-column" (click)="showDoctorToday()">
+            <div class="content">{{productStats.product_today}}</div>
+            <div class="icon">
+              Added This Day
+            </div>
+          </div>
+
+          <div class="child d-flex flex-column" (click)="showDoctorMonth()">
+            <div class="content">{{productStats.product_month}}</div>
+            <div class="icon">
+              Added This Month
+            </div>
+          </div>
+
+          <div class="child  d-flex flex-column" (click)="showDoctorYear()">
+            <div class="content">{{productStats.product_year}}</div>
+            <div class="icon">
+              Added This Year
+            </div>
+          </div>
+        </div>
+
+
+        <!-- All Doctor -->
+        <div class="table-wrapper childs" *ngIf="showAll">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">QrCode</th>
+                <th scope="col">Product Name</th>
+                <th scope="col">Photo</th>
+                <th scope="col">Product Type-ID</th>
+                <th scope="col">Price</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Description</th>
+                <th scope="col">Company Name</th>
+                <th scope="col"> Brand Country</th>
+                <th scope="col">Statue</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let product of productAll">
+              <tr>
+                <td>
+                  <h6>{{product.qrCode}}</h6>
+                </td>
+                <td>
+                  <h6>{{product.name}}</h6>
+                </td>
+                <td>
+                  <img src="assets/{{product.photo}}">
+                </td>
+                <td>
+                  <h6>{{product.type_id}}</h6>
+                </td>
+                <td>
+                  <h6>
+                    <h6>{{product.price}}</h6>
+                  </h6>
+                </td>
+                <td>
+                  <h6>{{product.quantity}}</h6>
+                </td>
+                <td>
+                  <h6>{{product.description}}</h6>
+                </td>
+                <td>
+                  <h6>{{product.company_name}}</h6>
+                </td>
+                <td>
+                  <h6>{{product.brandCountry}}</h6>
+                </td>
+                <td *ngIf="product.disable==0">
+                  <h6>Active</h6>
+                </td>
+                <td *ngIf="product.disable == 1">
+                  <h6>Not Active</h6>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+
+        <!-- Today Doctor -->
+        <div class="table-wrapper childs" *ngIf="showToday">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">QrCode</th>
+                <th scope="col">Product Name</th>
+                <th scope="col">Photo</th>
+                <th scope="col">Product Type-ID</th>
+                <th scope="col">Price</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Description</th>
+                <th scope="col">Company Name</th>
+                <th scope="col"> Brand Country</th>
+                <th scope="col">Statue</th>
+            </thead>
+            <tbody *ngFor="let product of productDay">
+              <tr>
+                <td>
+                  <h6>{{product.qrCode}}</h6>
+                </td>
+                <td>
+                  <h6>{{product.name}}</h6>
+                </td>
+                <td>
+                  <img src="assets/{{product.photo}}">
+                </td>
+                <td>
+                  <h6>{{product.type_id}}</h6>
+                </td>
+                <td>
+                  <h6>
+                    <h6>{{product.price}}</h6>
+                  </h6>
+                </td>
+                <td>
+                  <h6>{{product.quantity}}</h6>
+                </td>
+                <td>
+                  <h6>{{product.description}}</h6>
+                </td>
+                <td>
+                  <h6>{{product.company_name}}</h6>
+                </td>
+                <td>
+                  <h6>{{product.brandCountry}}</h6>
+                </td>
+                <td *ngIf="product.disable==0">
+                  <h6>Active</h6>
+                </td>
+                <td *ngIf="product.disable == 1">
+                  <h6>Not Active</h6>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Month Doctor -->
+        <div class="table-wrapper childs" *ngIf="showMonth">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">QrCode</th>
+                <th scope="col">Product Name</th>
+                <th scope="col">Photo</th>
+                <th scope="col">Product Type-ID</th>
+                <th scope="col">Price</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Description</th>
+                <th scope="col">Company Name</th>
+                <th scope="col"> Brand Country</th>
+                <th scope="col">Statue</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let product of productMonth">
+              <tr>
+                <td>
+                  <h6>{{product.qrCode}}</h6>
+                </td>
+                <td>
+                  <h6>{{product.name}}</h6>
+                </td>
+                <td>
+                  <img src="assets/{{product.photo}}">
+                </td>
+                <td>
+                  <h6>{{product.type_id}}</h6>
+                </td>
+                <td>
+                  <h6>
+                    <h6>{{product.price}}</h6>
+                  </h6>
+                </td>
+                <td>
+                  <h6>{{product.quantity}}</h6>
+                </td>
+                <td>
+                  <h6>{{product.description}}</h6>
+                </td>
+                <td>
+                  <h6>{{product.company_name}}</h6>
+                </td>
+                <td>
+                  <h6>{{product.brandCountry}}</h6>
+                </td>
+                <td *ngIf="product.disable==0">
+                  <h6>Active</h6>
+                </td>
+                <td *ngIf="product.disable == 1">
+                  <h6>Not Active</h6>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Year Doctor -->
+        <div class="table-wrapper childs" *ngIf="showYear">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">QrCode</th>
+                <th scope="col">Product Name</th>
+                <th scope="col">Photo</th>
+                <th scope="col">Product Type-ID</th>
+                <th scope="col">Price</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Description</th>
+                <th scope="col">Company Name</th>
+                <th scope="col"> Brand Country</th>
+                <th scope="col">Statue</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let product of productYear">
+              <tr>
+                <td>
+                  <h6>{{product.qrCode}}</h6>
+                </td>
+                <td>
+                  <h6>{{product.name}}</h6>
+                </td>
+                <td>
+                  <img src="assets/{{product.photo}}">
+                </td>
+                <td>
+                  <h6>{{product.type_id}}</h6>
+                </td>
+                <td>
+                  <h6>
+                    <h6>{{product.price}}</h6>
+                  </h6>
+                </td>
+                <td>
+                  <h6>{{product.quantity}}</h6>
+                </td>
+                <td>
+                  <h6>{{product.description}}</h6>
+                </td>
+                <td>
+                  <h6>{{product.company_name}}</h6>
+                </td>
+                <td>
+                  <h6>{{product.brandCountry}}</h6>
+                </td>
+                <td *ngIf="product.disable==0">
+                  <h6>Active</h6>
+                </td>
+                <td *ngIf="product.disable == 1">
+                  <h6>Not Active</h6>
+                </td>
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

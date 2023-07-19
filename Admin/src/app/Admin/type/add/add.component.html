@@ -1,0 +1,66 @@
+<div>
+  <div class="row m-0">
+    <div class="col-lg-3 col-1 p-0">
+      <app-sidebar-admin></app-sidebar-admin>
+    </div>
+
+    <div class="col-lg-9 col-11 mx-auto ">
+      <div class="container-lg box">
+
+        <div class="head-one d-flex align-items-center justify-content-between">
+          <h3>Add Types Of Product</h3>
+        </div>
+
+        <div class="back-edit" routerLink="/admin/type">
+          <i class="fa-solid fa-angles-left"></i>
+          <a style="margin-left: 5px;">Back</a>
+        </div>
+
+        <div class="add-product">
+          <h3>Types</h3>
+
+
+          <form #userForm="ngForm" (ngSubmit)="onsubmit(userForm.value)" class="form" ngNativeValidate>
+
+            <div class="alert alert-success" role="alert" *ngIf="valid">
+              Type is added sucessfully
+            </div>
+            <div class="alert alert-success" role="alert" *ngIf="invalid">
+              Type is already been taken
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Type Name</label>
+              <input type="text" class="form-control input" name="type" #name="ngModel"
+                [class.is-invalid]="name.invalid && name.touched" [ngModel] minlength="2" required>
+              <div *ngIf="name.errors && name.touched">
+                <small class="text-danger" *ngIf="name.errors?.['required']">
+                  Please enter type name
+                </small>
+                <small class="text-danger" *ngIf="name.errors?.['minlength']">
+                  Must contain at least 2 character
+                </small>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Image</label>
+              <input type="file" class="form-control" accept="image/*" name="photo" #photo="ngModel"
+                [class.is-invalid]="photo.invalid && photo.touched" [ngModel] (change)="onPhotoSelected($event)"
+                required>
+              <div *ngIf="photo.errors && photo.touched">
+                <small class="text-danger" *ngIf="photo.errors?.['required']">
+                  Please enter path of photo
+                </small>
+              </div>
+            </div>
+
+
+            <input type="submit" class="form-control" value="Submit">
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

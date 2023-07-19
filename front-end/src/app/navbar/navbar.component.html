@@ -1,0 +1,79 @@
+\<nav class="navbar navbar-expand-sm fixed-top">
+  <div class="container-fluid px-3 ps-5 ">
+    <a class="navbar-brand" routerLink="/home">
+      <img src="assets/imgs/logo-1.png" alt="" />
+      P H.com
+    </a>
+    <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId"
+      aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavId">
+      <ul class="navbar-nav me-auto mt-2 mt-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" routerLink="/home" aria-current="page">Home <span
+              class="visually-hidden">(current)</span></a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link active active dropdown-toggle" href="#" id="dropdownId" data-bs-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">Services</a>
+          <div class="dropdown-menu" aria-labelledby="dropdownId">
+            <a class="dropdown-item" routerLink="/services/doctors">Doctors</a>
+            <a class="dropdown-item" routerLink="/services/labs">Labs </a>
+            <a class="dropdown-item" routerLink="/services/session"> Live Session</a>
+            <a class="dropdown-item" routerLink="/services/doseClaculator">Dose Calculator </a>
+            <a class="dropdown-item" routerLink="/services/news">News </a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" routerLink="/products">Products</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" routerLink="/catalog">Catalog</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="#">About Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" routerLink="/contactUs">Contact Us</a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+        <li class="nav-item">
+          <a (click)="getAuth()" routerLink="/carts" class="nav-link position-relative">
+            <i class="fa-solid fa-cart-shopping shopping-icon fa-lg p-2 m-0"></i>
+            <span class="badge bg-danger text-white position-absolute top-0 end-0 rounded-circle"
+              *ngIf="isLogin">{{cartNumbers}}</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a (click)="getAuth()" routerLink="/user/wishlist" class="nav-link position-relative">
+            <i class="fa-regular fa-heart heart-icon fa-lg p-2 m-0"></i>
+            <span class="badge bg-danger text-white position-absolute top-0 end-0 rounded-circle"
+              *ngIf="isLogin">{{wishListtNumbers}}</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a (click)="getAuth()" routerLink="/user" class="nav-link position-relative">
+            <i class="fa-solid fa-user  user-icon fa-lg p-2 m-0"></i>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link active" *ngIf="!isLogin" routerLink="/login">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" *ngIf="!isLogin" routerLink="/signup">Register</a>
+        </li>
+        <li class="nav-item">
+          <span (click)="logOut()" *ngIf="isLogin" class="nav-link active">Logout</span>
+        </li>
+
+      </ul>
+
+    </div>
+  </div>
+</nav>

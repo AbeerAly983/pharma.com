@@ -1,0 +1,59 @@
+<div>
+  <div class="row m-0">
+    <div class="col-lg-3 col-1 p-0">
+      <app-sidebar-admin></app-sidebar-admin>
+    </div>
+
+    <div class="col-lg-9 col-11 mx-auto ">
+      <div class="container-lg box">
+
+        <div class="head-one d-flex align-items-center justify-content-between">
+          <h3>News</h3>
+          <div class="add-oc" routerLink="/admin/news/add">Add News</div>
+        </div>
+
+        <div class="table-wrapper childs">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">
+                  Title
+                </th>
+                <th scope="col">Photo</th>
+                <th scope="col">Details</th>
+                <th>Setting</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let news of news">
+              <tr>
+                <td>
+                  <h6>{{news.title}}</h6>
+                </td>
+                <td>
+                  <img src="assets/{{news.photo}}" alt="">
+                </td>
+                <td>
+                  <h6 class="limit-width text-hidden">{{news.description}}</h6>
+                </td>
+                <td>
+                  <div>
+                    <a (click)="valid=true; idCheckAlert=news.id"><i class="fa-solid fa-trash mx-2"></i></a>
+                    <a routerLink="/admin/news/edit/{{news.id}}"><i class="fa-solid fa-pen-to-square mx-2"></i></a>
+                  </div>
+                </td>
+              </tr>
+
+              <div class="alert alert-danger" role="alert" *ngIf="valid && idCheckAlert==news.id">
+                <p>Are you sure, you want to delete item?</p>
+                <button type="button" class="btn btn-outline-success" (click)="valid=false">Cancel</button>
+                <button type="button" class="btn btn-outline-danger" (click)="deleteNews(news.id)">OK</button>
+              </div>
+
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

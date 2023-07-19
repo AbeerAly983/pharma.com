@@ -1,0 +1,73 @@
+<div>
+  <div class="row m-0">
+    <div class="col-lg-3 col-1 p-0">
+      <app-sidebar-accountant></app-sidebar-accountant>
+    </div>
+
+    <div class="col-lg-9 col-11 mx-auto ">
+      <div class="container-lg box">
+
+        <div class="head-one d-flex align-items-center justify-content-between">
+          <h3>Shipped Orders</h3>
+        </div>
+        <div class="table-wrapper childs">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Order-ID</th>
+                <th scope="col">User</th>
+                <th scope="col">Qrcode</th>
+                <th scope="col">Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Phone</th>
+                <th>Control</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let order of pending">
+              <tr>
+                <td>
+                  <h6>{{order.order_id}}</h6>
+                </td>
+                <td>
+                  <h6>{{order.user_name}}</h6>
+                </td>
+                <td>
+                  <h6>{{order.qrCode}}</h6>
+                </td>
+                <td>
+                  <h6>
+                    <h6>{{order.product_name}}</h6>
+                  </h6>
+                </td>
+                <td>
+                  <h6>{{order.price}}</h6>
+                </td>
+                <td>
+                  <h6>{{order.quantity}}</h6>
+                </td>
+                <td>
+                  <h6>{{order.phone}}</h6>
+                </td>
+                <td>
+                  <div>
+                    <button type="button" class="btn btn-outline-success"
+                      (click)="valid=true; idCheckAlert=order.order_id">Deliver</button>
+
+
+                  </div>
+                </td>
+              </tr>
+              <div class="alert alert-danger" role="alert" *ngIf="valid && idCheckAlert==order.order_id">
+                <p>Are you sure, you want to deliver this order?</p>
+                <button type="button" class="btn btn-outline-success" (click)="valid=false">Cancel</button>
+                <button type="button" class="btn btn-outline-danger" (click)="deliverOrder(order.order_id)">OK</button>
+              </div>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

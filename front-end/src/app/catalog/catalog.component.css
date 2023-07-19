@@ -1,0 +1,251 @@
+/**/
+.partner {
+  margin-top: 100px !important;
+}
+
+.home {
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  align-items: stretch;
+}
+
+/* sidebar style */
+#side {
+  padding: 0 1rem 0 0.5rem;
+  border-right: solid 0.5px rgba(230, 227, 227, 0.926);
+  position: relative;
+  margin-left: 30px;
+  width: 400px;
+}
+
+.sidebar {
+  transition: all 0.4s ease;
+  margin-top: 60px;
+}
+
+.div-logo {
+  display: none;
+}
+
+.link-name {
+  margin: 20px 0 10px 0;
+  font-size: 20px;
+}
+
+#list {
+  position: relative;
+  margin-top: 20px;
+}
+
+.subList {
+  display: none;
+}
+
+.icon {
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+.icon .fa-angle-left {
+  position: absolute;
+  left: -5.7%;
+  top: 1px;
+  padding: 2px;
+  color: #2d4434;
+  font-size: 18px;
+  transition: all 0.3s ease;
+}
+
+.showList .subList {
+  display: block;
+  cursor: pointer;
+  list-style: none;
+  margin-top: 14px;
+  margin-left: -20px;
+}
+
+.back option {
+  background-color: #d6e6d5;
+}
+
+.showList .subList option {
+  margin-top: 4px;
+  transition: all 0.2s ease;
+  padding: 0.5rem;
+}
+
+.showList .subList option:hover {
+  background-color: #d6e6d5;
+}
+
+.showList .fa-angle-left {
+  transform: rotate(-90deg);
+}
+
+.form-check {
+  margin-top: 4px;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.form-check-input[type="checkbox"] {
+  border-radius: 0.25em;
+  border-color: #046fc188;
+}
+
+
+/*
+/product style/
+*/
+.container {
+  margin-left: 0;
+  margin-top: 60px;
+}
+
+.container .product-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 25px 15px;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.next-prev {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 2rem;
+}
+
+.next,
+.prev {
+  text-align: center;
+  background: #0694ff;
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  width: 111px;
+  height: 40px;
+  font-size: 12px;
+  transition: all 0.3s ease;
+}
+
+@media screen and (max-width: 620px) {
+  .div-logo {
+    display: block;
+    cursor: pointer;
+    transition: all 0.5s ease;
+    border: 1px solid #dbdbdb;
+    height: 70px;
+    width: auto;
+    margin-top: 10px;
+    padding: 0;
+    box-shadow: 0px 0px 5px 0px rgb(0 0 0 / 10%);
+    background-color: #d6e6d5;
+  }
+
+  .menue {
+    color: #333;
+    font-size: 16px;
+    margin-right: 14px;
+    cursor: pointer;
+  }
+
+  .filter {
+    color: #333;
+    font-size: 22px;
+    font-weight: 500;
+  }
+
+  .div-filter {
+    display: flex;
+    align-items: center;
+    margin: 20px 41px 0;
+  }
+
+  .link-name {
+    margin: 20px;
+  }
+
+  .selectOption {
+    width: 150px;
+    font-size: 14px;
+  }
+
+  .checkbox-filter {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .partner {
+    display: grid;
+  }
+
+  .home {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #side {
+    padding: 0;
+    margin-left: 0;
+    border-right: none;
+    position: relative;
+    width: 100%;
+  }
+
+  .sidebar {
+    transition: all 0.4s ease;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    z-index: 100;
+    left: -38rem;
+    margin-top: 0;
+    background-color: #d6e6d5;
+    box-shadow: 0px 0px 5px 0px rgb(0, 0, 0, 0.1);
+  }
+
+  .icon {
+    margin-left: 18px;
+  }
+
+  .icon .fa-angle-left {
+    position: absolute;
+    left: 2.3%;
+    top: 20px;
+    padding: 2px;
+    color: #2d4434;
+    font-size: 18px;
+    transition: all 0.3s ease;
+  }
+
+  .showList .subList {
+    margin-left: 20px;
+  }
+
+  .form-check {
+    margin-top: 4px;
+    margin-left: 20px;
+  }
+
+  .open .sidebar {
+    display: flex;
+    left: 0;
+    flex-direction: column;
+  }
+
+  .container,
+  .container-sm {
+    max-width: none;
+  }
+
+  .container {
+    justify-content: center;
+  }
+}

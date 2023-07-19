@@ -1,0 +1,23 @@
+<app-navbar></app-navbar>
+ <div  *ngIf="isLoading"  class="spinner position-fixed  w-100 h-100 d-flex justify-content-center align-items-center  mt-5 pt-5 bg-white">
+  <app-spinner></app-spinner>
+</div>
+
+<div class="container my-5 pt-3">
+  <div class="bg-main-light p-4 my-4">
+    <h3>News</h3>
+    <div  class="row align-items-center   border-bottom py-3 " *ngFor="let new of newsList" >
+      <div class="col-md-1">
+        <img class="w-100 h-100" src="assets/{{new.photo}}"  alt="">
+      </div>
+      <div class="col-md-11 d-flex justify-content-between">
+        <div>
+          <h6>{{new.title}}</h6>
+          <p class="text-grey">{{new.description}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

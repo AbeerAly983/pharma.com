@@ -1,0 +1,69 @@
+<div>
+  <div class="row m-0">
+    <div class="col-lg-3 col-1 p-0">
+      <app-sidebar-admin></app-sidebar-admin>
+    </div>
+
+    <div class="col-lg-9 col-11 mx-auto ">
+      <div class="container-lg box">
+
+
+        <div class="expire-reorder">
+          <div class="reorder-point" (click)="showReorderPoint()"><span
+              class="badge bg-danger text-white position-absolute rounded-circle" *ngIf="(reorder.length>0)">
+              {{reorder.length}}</span><i class="fa-solid fa-bell icon"></i>Reorder
+            Point
+          </div>
+          <div class="expire-date" (click)="showExpireDate()">
+            <span class="badge bg-danger text-white position-absolute rounded-circle" *ngIf="(expire.length>0)">
+              {{expire.length}}</span>
+            <i class="fa-solid fa-bell icon"></i> Expire
+            Date
+          </div>
+        </div>
+
+        <div class="container my-5 pt-3" *ngIf="showReorder">
+          <div class="bg-main-light p-4 my-4">
+            <div class="head-one d-flex align-items-center justify-content-between">
+              <h3>Reorder Point</h3>
+              <span class="add-oc">{{reorder.length}} Products</span>
+            </div>
+            <div class="row align-items-center border-bottom py-3 " *ngFor="let order of reorder">
+              <div class="col-md-3">
+                <img class="img" src="assets/{{order.photo}}" alt="">
+              </div>
+              <div class="col-md-9 d-flex justify-content-between">
+                <div>
+                  <h6>Product Name: {{order.name}}</h6>
+                  <h6>Quantity: {{order.quantity}}</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="container my-5 pt-3" *ngIf="showExpire">
+          <div class="bg-main-light p-4 my-4">
+            <div class="head-one d-flex align-items-center justify-content-between">
+              <h3>Expire Date</h3>
+              <span class="add-oc">{{expire.length}} Products</span>
+            </div>
+            <div class="row align-items-center border-bottom py-3 " *ngFor="let order of expire">
+              <div class="col-md-3">
+                <img class="img" src="assets/{{order.photo}}" alt="">
+              </div>
+              <div class="col-md-9 d-flex justify-content-between">
+                <div>
+                  <h6>Product Name: {{order.name}}</h6>
+                  <h6>Quantity: {{order.quantity}}</h6>
+                  <h6>Production Date: {{order.production_date| date : "shortDate"}}</h6>
+                  <h6>Expire Date: {{order.expiry_date| date : "shortDate"}}</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>

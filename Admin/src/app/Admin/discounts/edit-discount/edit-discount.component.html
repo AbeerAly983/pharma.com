@@ -1,0 +1,74 @@
+<div>
+  <div class="row m-0">
+    <div class="col-lg-3 col-1 p-0">
+      <app-sidebar-admin></app-sidebar-admin>
+    </div>
+
+    <div class="col-lg-9 col-11 mx-auto ">
+      <div class="container-lg box">
+
+        <div class="head-one d-flex align-items-center justify-content-between">
+          <h3>Product Discount</h3>
+          <div class="add-oc" routerLink="/admin/offers/add">Add Discount</div>
+        </div>
+        <div class="back-edit" routerLink="/admin/offers">
+          <i class="fa-solid fa-angles-left"></i>
+          <a style="margin-left: 5px;">Back</a>
+        </div>
+
+        <div class="edit-type">
+          <h3>Edit Discount Of Product</h3>
+
+
+          <form #userForm="ngForm" (ngSubmit)="onsubmit(userForm.value)" class="form" ngNativeValidate>
+
+            <div class="alert alert-success" role="alert" *ngIf="valid">
+              Your changed is updated sucessfully
+            </div>
+
+
+            <div class="mb-3">
+              <label class="form-label">Percentage of Discount</label>
+              <input type="text" class="form-control input" name="presentage_Discount" #presentage_Discount="ngModel"
+                [class.is-invalid]="presentage_Discount.invalid && presentage_Discount.touched"
+                [(ngModel)]="discount.presentage_Discount" minlength="2" required pattern="\d*\.?\d+">
+
+              <div *ngIf="presentage_Discount.errors && presentage_Discount.touched">
+                <small class="text-danger" *ngIf="presentage_Discount.errors?.['required']">
+                  Please enter presentage
+                </small>
+                <small class="text-danger" *ngIf="presentage_Discount.errors?.['minlength']">
+                  Must contain at least 2 character
+                </small>
+                <small class="text-danger" *ngIf="presentage_Discount.errors?.['pattern']">
+                  Must contain only numbers
+                </small>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Price of Discount</label>
+              <input type="text" class="form-control input" name="discount_price" #discount_price="ngModel"
+                [class.is-invalid]="discount_price.invalid && discount_price.touched"
+                [(ngModel)]="discount.discount_price" minlength="2" required pattern="\d*\.?\d+">
+
+              <div *ngIf="discount_price.errors && discount_price.touched">
+                <small class="text-danger" *ngIf="discount_price.errors?.['required']">
+                  Please enter price
+                </small>
+                <small class="text-danger" *ngIf="discount_price.errors?.['minlength']">
+                  Must contain at least 2 character
+                </small>
+                <small class="text-danger" *ngIf="discount_price.errors?.['pattern']">
+                  Must contain only numbers
+                </small>
+              </div>
+            </div>
+
+            <input type="submit" class="form-control" value="Submit">
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

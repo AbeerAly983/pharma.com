@@ -1,0 +1,250 @@
+<div class="">
+  <div class="row m-0 ">
+    <div class="col-lg-3 col-1 p-0">
+      <app-sidebar-owner></app-sidebar-owner>
+    </div>
+
+    <div class="col-lg-9 col-11 mx-auto ">
+      <div class="container-lg box">
+
+        <div class="head-one d-flex align-items-center justify-content-between">
+          <h3>Doctors Analytics</h3>
+        </div>
+
+        <div class="parent">
+
+          <div class="child d-flex flex-column" (click)="showDoctorAll()">
+            <div class="content">{{DoctorStats.total_doctors}}</div>
+            <div class="icon">
+              Total Number of Doctors
+            </div>
+          </div>
+
+          <div class="child d-flex flex-column" (click)="showDoctorToday()">
+            <div class="content">{{DoctorStats.doctor_today}}</div>
+            <div class="icon">
+              Added This Day
+            </div>
+          </div>
+
+          <div class="child d-flex flex-column" (click)="showDoctorMonth()">
+            <div class="content">{{DoctorStats.doctor_month}}</div>
+            <div class="icon">
+              Added This Month
+            </div>
+          </div>
+
+          <div class="child  d-flex flex-column" (click)="showDoctorYear()">
+            <div class="content">{{DoctorStats.doctor_year}}</div>
+            <div class="icon">
+              Added This Year
+            </div>
+          </div>
+        </div>
+
+
+        <!-- All Doctor -->
+        <div class="table-wrapper childs" *ngIf="showAll">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Photo</th>
+                <th scope="col">Name</th>
+                <th scope="col">Specialize</th>
+                <th scope="col">Appointment</th>
+                <th scope="col">Time</th>
+                <th scope="col">Phone</th>
+                <th scope="col">City</th>
+                <th scope="col">Residential Area</th>
+                <th scope="col">Street</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let doctor of DoctorAll">
+              <tr>
+                <td>
+                  <img src="assets/{{doctor.photo}}">
+                </td>
+                <td>
+                  <h6>{{doctor.name}}</h6>
+                </td>
+                <td>
+                  <h6>{{doctor.specialize}}</h6>
+                </td>
+                <td>
+                  <h6>{{doctor.appointment}}</h6>
+                </td>
+                <td>
+                  <h6>{{doctor.time}}</h6>
+                </td>
+                <td>
+                  <h6>{{doctor.phone}}</h6>
+                </td>
+                <td>
+                  <h6>{{doctor.city}}</h6>
+                </td>
+                <td>
+                  <h6>{{doctor.residential_area}}</h6>
+                </td>
+                <td>
+                  <h6>{{doctor.street}}</h6>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+
+        <!-- Today Doctor -->
+        <div class="table-wrapper childs" *ngIf="showToday">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Photo</th>
+                <th scope="col">Name</th>
+                <th scope="col">Specialize</th>
+                <th scope="col">Appointment</th>
+                <th scope="col">Time</th>
+                <th scope="col">Phone</th>
+                <th scope="col">City</th>
+                <th scope="col">Residential Area</th>
+                <th scope="col">Street</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let doctor of DoctorDay">
+              <tr>
+                <td>
+                  <img src="assets/{{doctor.photo}}">
+                </td>
+                <td>
+                  <h6>{{doctor.name}}</h6>
+                </td>
+                <td>
+                  <h6>{{doctor.specialize}}</h6>
+                </td>
+                <td>
+                  <h6>{{doctor.appointment}}</h6>
+                </td>
+                <td>
+                  <h6>{{doctor.time}}</h6>
+                </td>
+                <td>
+                  <h6>{{doctor.phone}}</h6>
+                </td>
+                <td>
+                  <h6>{{doctor.city}}</h6>
+                </td>
+                <td>
+                  <h6>{{doctor.residential_area}}</h6>
+                </td>
+                <td>
+                  <h6>{{doctor.street}}</h6>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Month Doctor -->
+        <div class="table-wrapper childs" *ngIf="showMonth">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Photo</th>
+                <th scope="col">Name</th>
+                <th scope="col">Specialize</th>
+                <th scope="col">Appointment</th>
+                <th scope="col">Time</th>
+                <th scope="col">Phone</th>
+                <th scope="col">City</th>
+                <th scope="col">Residential Area</th>
+                <th scope="col">Street</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let doctor of DoctorMonth">
+              <tr>
+                <td>
+                  <img src="assets/{{doctor.photo}}">
+                </td>
+                <td>
+                  <h6>{{doctor.name}}</h6>
+                </td>
+                <td>
+                  <h6>{{doctor.specialize}}</h6>
+                </td>
+                <td>
+                  <h6>{{doctor.appointment}}</h6>
+                </td>
+                <td>
+                  <h6>{{doctor.time}}</h6>
+                </td>
+                <td>
+                  <h6>{{doctor.phone}}</h6>
+                </td>
+                <td>
+                  <h6>{{doctor.city}}</h6>
+                </td>
+                <td>
+                  <h6>{{doctor.residential_area}}</h6>
+                </td>
+                <td>
+                  <h6>{{doctor.street}}</h6>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Year Doctor -->
+        <div class="table-wrapper childs" *ngIf="showYear">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Photo</th>
+                <th scope="col">Name</th>
+                <th scope="col">Specialize</th>
+                <th scope="col">Appointment</th>
+                <th scope="col">Time</th>
+                <th scope="col">Phone</th>
+                <th scope="col">City</th>
+                <th scope="col">Residential Area</th>
+                <th scope="col">Street</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let doctor of DoctorYear">
+              <tr>
+                <td>
+                  <img src="assets/{{doctor.photo}}">
+                </td>
+                <td>
+                  <h6>{{doctor.name}}</h6>
+                </td>
+                <td>
+                  <h6>{{doctor.specialize}}</h6>
+                </td>
+                <td>
+                  <h6>{{doctor.appointment}}</h6>
+                </td>
+                <td>
+                  <h6>{{doctor.time}}</h6>
+                </td>
+                <td>
+                  <h6>{{doctor.phone}}</h6>
+                </td>
+                <td>
+                  <h6>{{doctor.city}}</h6>
+                </td>
+                <td>
+                  <h6>{{doctor.residential_area}}</h6>
+                </td>
+                <td>
+                  <h6>{{doctor.street}}</h6>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

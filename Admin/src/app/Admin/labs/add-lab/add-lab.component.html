@@ -1,0 +1,165 @@
+<div>
+  <div class="row m-0">
+    <div class="col-lg-3 col-1 p-0">
+      <app-sidebar-admin></app-sidebar-admin>
+    </div>
+
+    <div class="col-lg-9 col-11 mx-auto ">
+      <div class="container-lg box">
+
+        <div class="head-one d-flex align-items-center justify-content-between">
+          <h3>Laboratories</h3>
+        </div>
+
+        <div class="back-edit" routerLink="/admin/labs">
+          <i class="fa-solid fa-angles-left"></i>
+          <a style="margin-left: 5px;">Back</a>
+        </div>
+        <div class="edit-profile">
+          <h3>Laboratory</h3>
+
+
+          <form #userForm="ngForm" (ngSubmit)="onsubmit(userForm.value)" class="form" ngNativeValidate>
+
+            <div class="alert alert-success" role="alert" *ngIf="valid">
+              Laboratories is added sucessfully
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Name</label>
+              <input type="text" class="form-control input" name="name" #name="ngModel"
+                [class.is-invalid]="name.invalid && name.touched" [ngModel] minlength="4" required>
+
+              <div *ngIf="name.errors && name.touched">
+                <small class="text-danger" *ngIf="name.errors?.['required']">
+                  Please enter name
+                </small>
+                <small class="text-danger" *ngIf="name.errors?.['minlength']">
+                  must contain at least 4 character
+                </small>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Medical Analyses</label>
+              <input type="text" class="form-control input" name="type_of_medical_analyses" #medical="ngModel"
+                [class.is-invalid]="medical.invalid && medical.touched" [ngModel] minlength="4" required>
+
+              <div *ngIf="medical.errors && medical.touched">
+                <small class="text-danger" *ngIf="medical.errors?.['required']">
+                  Please enter medical analyses type
+                </small>
+                <small class="text-danger" *ngIf="medical.errors?.['minlength']">
+                  must contain at least 4 character
+                </small>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Appointment</label>
+              <input type="text" class="form-control input" name="appointment" #appoint="ngModel"
+                [class.is-invalid]="appoint.invalid && appoint.touched" [ngModel] minlength="4" required>
+              <div *ngIf="appoint.errors && appoint.touched">
+                <small class="text-danger" *ngIf="appoint.errors?.['required']">
+                  Please enter appointment
+                </small>
+                <small class="text-danger" *ngIf="appoint.errors?.['minlength']">
+                  must contain at least 4 character
+                </small>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Time</label>
+              <input type="text" class="form-control input" name="time" #time="ngModel"
+                [class.is-invalid]="time.invalid && time.touched" [ngModel] minlength="4" required>
+              <div *ngIf="time.errors && time.touched">
+                <small class="text-danger" *ngIf="time.errors?.['required']">
+                  Please enter time
+                </small>
+                <small class="text-danger" *ngIf="time.errors?.['minlength']">
+                  must contain at least 4 character
+                </small>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">City</label>
+              <input type="text" class="form-control input" name="city" #city="ngModel"
+                [class.is-invalid]="city.invalid && city.touched" [ngModel] pattern="[0-9a-zA-Z\s]{3,}" required>
+
+              <div *ngIf="city.errors && city.touched">
+                <small class="text-danger" *ngIf="city.errors?.['required']">
+                  Please enter city
+                </small>
+                <small class="text-danger" *ngIf="city.errors?.['pattern']">
+                  Please enter valid city</small>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Residential Area</label>
+              <input type="text" class="form-control input" name="residential_area" #area="ngModel"
+                [class.is-invalid]="area.invalid && area.touched" [ngModel] pattern="[0-9a-zA-Z\s]{4,}" required>
+
+              <div *ngIf="area.errors && area.touched">
+                <small class="text-danger" *ngIf="area.errors?.['required']">
+                  Please enter residential area
+                </small>
+                <small class="text-danger" *ngIf="area.errors?.['pattern']">
+                  Please enter valid residential area</small>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Street</label>
+              <input type="text" class="form-control input" name="street" #street="ngModel"
+                [class.is-invalid]="street.invalid && street.touched" [ngModel] pattern="[0-9a-zA-Z\s]{1,}" required>
+
+              <div *ngIf="street.errors && street.touched">
+                <small class="text-danger" *ngIf="street.errors?.['required']">
+                  Please enter street
+                </small>
+                <small class="text-danger" *ngIf="street.errors?.['pattern']">
+                  Please enter valid street</small>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Phone number</label>
+
+              <div class=" input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">+20</span>
+                <input type="tel" class="form-control input" name="phone" #phone="ngModel"
+                  [class.is-invalid]="phone.invalid && phone.touched" [ngModel] pattern="^(1|01)[0-2,5]{1}[0-9]{8}$"
+                  required>
+              </div>
+
+              <div *ngIf="phone.errors && phone.touched">
+                <small class="text-danger" *ngIf="phone.errors?.['required']">
+                  Please enter phone number
+                </small>
+                <small class="text-danger" *ngIf="phone.errors?.['pattern']">
+                  Please enter valid phone number</small>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Photo</label>
+              <input type="file" class="form-control" accept="image/*" name="photo" #photo="ngModel"
+                [class.is-invalid]="photo.invalid && photo.touched" [ngModel] (change)="onPhotoSelected($event)"
+                required>
+              <div *ngIf="photo.errors && photo.touched">
+                <small class="text-danger" *ngIf="photo.errors?.['required']">
+                  Please enter path of photo
+                </small>
+              </div>
+            </div>
+
+            <input type="submit" class="form-control" value="Submit">
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

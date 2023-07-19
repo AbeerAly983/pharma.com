@@ -1,0 +1,73 @@
+<div>
+  <div class="row m-0">
+    <div class="col-lg-3 col-1 p-0">
+      <app-sidebar-accountant></app-sidebar-accountant>
+    </div>
+    <div class="col-lg-9 col-11 mx-auto ">
+      <div class="container-lg box">
+
+        <div class="head-one d-flex align-items-center justify-content-between">
+          <h3>
+            Retrieved quantity</h3>
+        </div>
+
+        <div class="back-edit" routerLink="/accountant/cancelSomeQuantity">
+          <i class="fa-solid fa-angles-left"></i>
+          <a style="margin-left: 5px;">Back</a>
+        </div>
+        <div class="edit-profile">
+          <h3>Retrieved quantity</h3>
+
+
+          <form #userForm="ngForm" (ngSubmit)="onsubmit(userForm.value)" class="form" ngNativeValidate>
+
+            <div class="alert alert-success" role="alert" *ngIf="valid">
+              Your quantity is Updated sucessfully
+            </div>
+            <div class="alert alert-success" role="alert" *ngIf="invalid">
+              Zero value is not available for delivered or canceled quantity
+            </div>
+            <div class="alert alert-success" role="alert" *ngIf="wrong">
+              Total canceled and delivered quantity is not equal to quantitiy that this user required
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Delivered Quantity</label>
+              <input type="text" class="form-control input" name="delivered_quantity" #delivered_quantity="ngModel"
+                [class.is-invalid]="delivered_quantity.invalid && delivered_quantity.touched" [ngModel]
+                pattern="^[0-9]\d*$" required>
+
+              <div *ngIf="delivered_quantity.errors && delivered_quantity.touched">
+                <small class="text-danger" *ngIf="delivered_quantity.errors?.['required']">
+                  Please delivered quantity
+                </small>
+                <small class="text-danger" *ngIf="delivered_quantity.errors?.['pattern']">
+                  Please enter valid quantitiy
+                </small>
+              </div>
+            </div>
+
+
+
+            <div class="mb-3">
+              <label class="form-label">Canceled Quantity</label>
+              <input type="text" class="form-control input" name="canceled_quantity" #canceled_quantity="ngModel"
+                [class.is-invalid]="canceled_quantity.invalid && canceled_quantity.touched" [ngModel]
+                pattern="^[0-9]\d*$" required>
+
+              <div *ngIf="canceled_quantity.errors && canceled_quantity.touched">
+                <small class="text-danger" *ngIf="canceled_quantity.errors?.['required']">
+                  Please enter canceled quantity
+                </small>
+                <small class="text-danger" *ngIf="canceled_quantity.errors?.['pattern']">
+                  Please enter valid quantity</small>
+              </div>
+            </div>
+
+            <input type="submit" class="form-control" value="Submit">
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+<app-navbar></app-navbar>
+
+<div class="container box">
+    <h1>Feedback</h1>
+    <p>
+        Your opinion counts you have made us Egypt’s leading pharmacy chain and we take your comments and concerns to
+        heart.
+    </p>
+    <div class="form-group purple-border">
+        <textarea class="form-control feedback" id="exampleFormControlTextarea4" rows="3"></textarea>
+        <button type="button" class="btn btn-primary btn-lg btn-block" (click)="sendFeedback()">Send Feedback </button>
+
+        <!-- alert feedback -->
+        <div class="alert alert-success" role="alert" *ngIf="valid">
+            Your Feedback is sended successfully
+        </div>
+    </div>
+
+
+</div>
+
+<app-footer></app-footer>

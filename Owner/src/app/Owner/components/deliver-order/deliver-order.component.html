@@ -1,0 +1,205 @@
+<div class="">
+  <div class="row m-0 ">
+    <div class="col-lg-3 col-1 p-0">
+      <app-sidebar-owner></app-sidebar-owner>
+    </div>
+
+    <div class="col-lg-9 col-11 mx-auto ">
+      <div class="container-lg box">
+
+        <div class="head-one d-flex align-items-center justify-content-between">
+          <h3>Delivered Orders Analytics</h3>
+        </div>
+
+        <div class="parent">
+
+          <div class="child d-flex flex-column" (click)="showOrdersAll()">
+            <div class="content">{{numberOfOrdersDelivered.total_orders_delivered}}</div>
+            <div class="icon">
+              Total Number of Orders
+            </div>
+          </div>
+
+          <div class="child d-flex flex-column" (click)="showOrdersToday()">
+            <div class="content">{{numberOfOrdersDelivered.order_delivered_today}}</div>
+            <div class="icon">
+              Added This Day
+            </div>
+          </div>
+
+          <div class="child d-flex flex-column" (click)="showOrdersMonth()">
+            <div class="content">{{numberOfOrdersDelivered.order_delivered_month}}</div>
+            <div class="icon">
+              Added This Month
+            </div>
+          </div>
+
+          <div class="child  d-flex flex-column" (click)="showOrdersYear()">
+            <div class="content">{{numberOfOrdersDelivered.order_delivered_year}}</div>
+            <div class="icon">
+              Added This Year
+            </div>
+          </div>
+        </div>
+
+
+        <!-- All Orders -->
+        <div class="all-order" *ngIf="showAll">
+          <div class="head-one d-flex align-items-center justify-content-between">
+            <h3>All Profit : {{orderTotal.total}}</h3>
+          </div>
+          <div class="table-wrapper childs">
+
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Product-ID</th>
+                  <th scope="col">User-ID</th>
+                  <th scope="col">Quantity</th>
+                  <th scope="col">Price</th>
+                  <th scope="col">Total Price</th>
+                </tr>
+              </thead>
+              <tbody *ngFor="let order of allDeliveredOrders">
+                <tr>
+                  <td>
+                    <h6>{{order.product_id}}</h6>
+                  </td>
+                  <td>
+                    <h6>{{order.user_id}}</h6>
+                  </td>
+                  <td>
+                    <h6>{{order.quantity}}</h6>
+                  </td>
+                  <td>
+                    <h6>{{order.price}}</h6>
+                  </td>
+                  <td>
+                    <h6> {{order.totalPrice}}</h6>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Today Orders -->
+        <div *ngIf="showToday">
+          <div class="head-one d-flex align-items-center justify-content-between">
+            <h3>Profit Of The Day : {{orderTotal.total_today}}</h3>
+          </div>
+          <div class="table-wrapper childs">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Product-ID</th>
+                  <th scope="col">User-ID</th>
+                  <th scope="col">Quantity</th>
+                  <th scope="col">Price</th>
+                  <th scope="col">Total Price</th>
+                </tr>
+              </thead>
+              <tbody *ngFor="let today of orderDeliveredToday">
+                <tr>
+                  <td>
+                    <h6>{{today.product_id}}</h6>
+                  </td>
+                  <td>
+                    <h6>{{today.user_id}}</h6>
+                  </td>
+                  <td>
+                    <h6>{{today.quantity}}</h6>
+                  </td>
+                  <td>
+                    <h6>{{today.price}}</h6>
+                  </td>
+                  <td>
+                    <h6> {{today.totalPrice}}</h6>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Month Orders -->
+        <div *ngIf="showMonth">
+          <div class="head-one d-flex align-items-center justify-content-between">
+            <h3>Profit Of The Month : {{orderTotal.total_month}}</h3>
+          </div>
+          <div class="table-wrapper childs">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Product-ID</th>
+                  <th scope="col">User-ID</th>
+                  <th scope="col">Quantity</th>
+                  <th scope="col">Price</th>
+                  <th scope="col">Total Price</th>
+                </tr>
+              </thead>
+              <tbody *ngFor="let month of orderDeliveredMonth">
+                <tr>
+                  <td>
+                    <h6>{{month.product_id}}</h6>
+                  </td>
+                  <td>
+                    <h6>{{month.user_id}}</h6>
+                  </td>
+                  <td>
+                    <h6>{{month.quantity}}</h6>
+                  </td>
+                  <td>
+                    <h6>{{month.price}}</h6>
+                  </td>
+                  <td>
+                    <h6> {{month.totalPrice}}</h6>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Year Orders -->
+        <div *ngIf="showYear">
+          <div class="head-one d-flex align-items-center justify-content-between">
+            <h3>Profit Of The Year : {{orderTotal.total_year}}</h3>
+          </div>
+          <div class="table-wrapper childs">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Product-ID</th>
+                  <th scope="col">User-ID</th>
+                  <th scope="col">Quantity</th>
+                  <th scope="col">Price</th>
+                  <th scope="col">Total Price</th>
+                </tr>
+              </thead>
+              <tbody *ngFor="let year of orderDeliveredYear">
+                <tr>
+                  <td>
+                    <h6>{{year.product_id}}</h6>
+                  </td>
+                  <td>
+                    <h6>{{year.user_id}}</h6>
+                  </td>
+                  <td>
+                    <h6>{{year.quantity}}</h6>
+                  </td>
+                  <td>
+                    <h6>{{year.price}}</h6>
+                  </td>
+                  <td>
+                    <h6>{{year.totalPrice}}</h6>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

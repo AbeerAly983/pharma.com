@@ -1,0 +1,73 @@
+<!-- navbar -->
+<app-navbar></app-navbar>
+<div  *ngIf="isLoading"  class="spinner position-fixed  w-100 h-100 d-flex justify-content-center align-items-center  mt-5 pt-5 bg-white"> <!-- show spinner when loading is true -->
+  <app-spinner></app-spinner>
+</div>
+
+<!-- catalog -->
+<div class="partner">
+  <div class="home">
+    <!-- sidebar -->
+    <div id="side" (click)="nav()">
+      <div class="div-logo">
+        <div class="div-filter">
+          <div class="menue"><i class="fa-solid fa-filter"></i></div>
+          <span class="filter">Filter</span>
+        </div>
+      </div>
+      <div class="sidebar">
+        <div id="list" (click)="droplist()">
+          <div class="icon">
+            <i class="fa fa-angle-left arrow"></i>
+            <h4 class="link-name">All Category</h4>
+          </div>
+          <ul class="subList" (click)="getOptionFilter($event)">
+            <li class="menue-list"><option>All Category</option></li>
+            <li class="menue-list">
+              <option *ngFor="let cat of category" [value]="cat.id">
+                {{ cat.type }}
+              </option>
+            </li>
+          </ul>
+        </div>
+
+        <h4 class="link-name">Category</h4>
+        <div class="form-check" *ngFor="let category of category">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            name="category"
+            [value]="category.id"
+            (click)="anotherFilter($event)"
+            [id]="category.id"
+            id="flexCkeckDefault"
+          />
+          <label
+            for="flexCkeckDefault"
+            [for]="category.id"
+            class="form-check-label"
+          >
+            {{ category.type }} </label
+          ><br />
+        </div>
+      </div>
+    </div>
+
+    <!-- Product -->
+    <div class="container">
+      <div *ngFor="let chunk of chunks">
+        <div class="product-container" *ngIf="chunk === currentChunk">
+          <div class="box" *ngFor="let item of chunk">
+            <app-single-category [product]="item"  [addToWishList]="wishList.indexOf(item.id) >=0"></app-single-category>
+          </div>
+        </div>
+      </div>
+      <div class="next-prev">
+        <button (click)="showPrevious()" class="prev">Previous</button>
+        <button (click)="showNext()" class="next">Next</button>
+      </div>
+    </div>
+  </div>
+  <!-- footer -->
+  <app-footer></app-footer>
+</div>

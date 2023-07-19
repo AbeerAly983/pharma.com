@@ -1,0 +1,19 @@
+.discountclass {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pricedel {
+  color: rgb(184, 181, 181);
+}
+.success-message {
+  position: absolute !important;
+  top: 20%  !important;
+  left: 50%  !important;
+  transform: translateX(-50%)  !important;
+  padding: 10px  !important;
+  border-radius: 5px  !important;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px  !important;
+}

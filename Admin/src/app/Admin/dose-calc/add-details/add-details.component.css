@@ -1,0 +1,105 @@
+* {
+  box-sizing: border-box;
+}
+
+
+
+.box {
+  margin: 170px 0;
+
+}
+
+::placeholder {
+  color: #608a5c;
+  font-size: 11px;
+}
+.col-lg-3 {
+  width: 20%;
+}
+.head-one {
+  color: #115837;
+  margin-bottom: 50px;
+  height: 100px;
+  padding: 0 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+
+
+.alert {
+  position: absolute;
+  width: 96%;
+  text-align: center;
+  padding: 50px;
+  top: 30%;
+  box-shadow: 0 0 7px -5px #e72e2e;
+}
+
+
+
+.add-oc {
+  background-color: #115837;
+  padding: 20px;
+  width: 255px;
+  color: #fff;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.add-oc:hover {
+  background-color: #0e492d;
+}
+
+.head-two {
+  color: #115837;
+  margin-bottom: 20px;
+  height: 50px;
+  padding: 0 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+
+}
+.back-edit{
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+.childs {
+  color: #115837;
+  margin-bottom: 50px;
+  min-height: 200px;
+  padding: 0 20px;
+  background-color: #fff;
+   border-radius: 10px;
+  position: relative;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+.childs img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.childs a {
+  color: #115837;
+  cursor: pointer;
+}
+
+
+.limt-width {
+  width: 14.22%;
+}
+
+.btn {
+  width: 80px;
+  padding: 5px;
+  margin: 5px;
+}

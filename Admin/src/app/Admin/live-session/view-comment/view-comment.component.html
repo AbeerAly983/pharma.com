@@ -1,0 +1,40 @@
+<div>
+  <div class="row m-0">
+    <div class="col-lg-3 col-1 p-0">
+      <app-sidebar-admin></app-sidebar-admin>
+    </div>
+
+    <div class="col-lg-9 col-11 mx-auto ">
+      <div class="container-lg box">
+
+        <div class="head-one d-flex align-items-center justify-content-between">
+          <h3>Live Sessions</h3>
+          <div class="add-oc" routerLink="/admin/session/add">Add Live-Session</div>
+        </div>
+
+        <div class="container my-5 pt-3">
+          <div *ngIf="comment.length === 0" class="text-center fw-bold mt-5">
+            <img class="w-100 " src="../../../assets/notFound/undraw_empty_re_opql.svg" height="550" alt="">
+          </div>
+          <div class="bg-main-light p-4 my-4" *ngIf="comment.length > 0">
+            <h3>Comments</h3>
+            <div class="row align-items-center border-bottom py-3 " *ngFor="let comment of comment">
+              <div class="col-md-1">
+                <img class="w-100" src="assets/{{comment.photo}}" alt="">
+              </div>
+              <div class="col-md-11 d-flex justify-content-between">
+                <div>
+                  <h6>User Name: {{comment.name}}</h6>
+                  <h6>{{comment.comment}}</h6>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>

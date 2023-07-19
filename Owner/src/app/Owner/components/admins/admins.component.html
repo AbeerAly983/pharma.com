@@ -1,0 +1,199 @@
+<div class="">
+  <div class="row m-0 ">
+    <div class="col-lg-3 col-1 p-0">
+      <app-sidebar-owner></app-sidebar-owner>
+    </div>
+
+    <div class="col-lg-9 col-11 mx-auto ">
+      <div class="container-lg box">
+
+        <div class="head-one d-flex align-items-center justify-content-between">
+          <h3>Admins Analytics</h3>
+        </div>
+
+        <div class="parent">
+
+          <div class="child d-flex flex-column" (click)="showAdminAll()">
+            <div class="content">{{AdminStats.total_admins}}</div>
+            <div class="icon">
+              Total Number of Admins
+            </div>
+          </div>
+
+          <div class="child d-flex flex-column" (click)="showAdminToday()">
+            <div class="content">{{AdminStats.admin_today}}</div>
+            <div class="icon">
+              Added This Day
+            </div>
+          </div>
+
+          <div class="child d-flex flex-column" (click)="showAdminMonth()">
+            <div class="content">{{AdminStats.admin_month}}</div>
+            <div class="icon">
+              Added This Month
+            </div>
+          </div>
+
+          <div class="child  d-flex flex-column" (click)="showAdminYear()">
+            <div class="content">{{AdminStats.admin_year}}</div>
+            <div class="icon">
+              Added This Year
+            </div>
+          </div>
+        </div>
+
+
+        <!-- All Accountants -->
+        <div class="table-wrapper childs" *ngIf="showAll">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Photo</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Status</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let admin of AdminAll">
+              <tr>
+                <td>
+                  <img src="assets/{{admin.photo}}">
+                </td>
+                <td>
+                  <h6>{{admin.first_name}} {{admin.last_name}}</h6>
+                </td>
+                <td>
+                  <h6>{{admin.email}}</h6>
+                </td>
+                <td>
+                  <h6>{{admin.phone}}</h6>
+                </td>
+                <td *ngIf="admin.disabled == 0">
+                  <h6>Active</h6>
+                </td>
+                <td *ngIf="admin.disabled == 1">
+                  <h6>Not Active</h6>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Today Accountants -->
+        <div class="table-wrapper childs" *ngIf="showToday">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Photo</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Status</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let admin of AdminDay">
+              <tr>
+                <td>
+                  <img src="assets/{{admin.photo}}">
+                </td>
+                <td>
+                  <h6>{{admin.first_name}} {{admin.last_name}}</h6>
+                </td>
+                <td>
+                  <h6>{{admin.email}}</h6>
+                </td>
+                <td>
+                  <h6>{{admin.phone}}</h6>
+                </td>
+                <td *ngIf="admin.disabled == 0">
+                  <h6>Active</h6>
+                </td>
+                <td *ngIf="admin.disabled == 1">
+                  <h6>Not Active</h6>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Month Accountants -->
+        <div class="table-wrapper childs" *ngIf="showMonth">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Photo</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Status</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let admin of AdminMonth">
+              <tr>
+                <td>
+                  <img src="assets/{{admin.photo}}">
+                </td>
+                <td>
+                  <h6>{{admin.first_name}} {{admin.last_name}}</h6>
+                </td>
+                <td>
+                  <h6>{{admin.email}}</h6>
+                </td>
+                <td>
+                  <h6>{{admin.phone}}</h6>
+                </td>
+                <td *ngIf="admin.disabled == 0">
+                  <h6>Active</h6>
+                </td>
+                <td *ngIf="admin.disabled == 1">
+                  <h6>Not Active</h6>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+
+
+        <!-- Year Accountants -->
+        <div class="table-wrapper childs" *ngIf="showYear">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Photo</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Status</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let admin of AdminYear">
+              <tr>
+                <td>
+                  <img src="assets/{{admin.photo}}">
+                </td>
+                <td>
+                  <h6>{{admin.first_name}} {{admin.last_name}}</h6>
+                </td>
+                <td>
+                  <h6>{{admin.email}}</h6>
+                </td>
+                <td>
+                  <h6>{{admin.phone}}</h6>
+                </td>
+                <td *ngIf="admin.disabled == 0">
+                  <h6>Active</h6>
+                </td>
+                <td *ngIf="admin.disabled == 1">
+                  <h6>Not Active</h6>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

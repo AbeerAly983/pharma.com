@@ -1,0 +1,144 @@
+footer {
+    width: 100%;
+    padding: 10px;
+    background-color: rgb(242, 242, 242);
+}
+
+.all-links {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    width: 90%;
+}
+
+.all-links .fa-angle-down {
+    opacity: 0;
+}
+
+.list input {
+    display: none;
+}
+
+.list {
+    padding: 12px;
+    width: 260px;
+}
+
+.title {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.list ul {
+    list-style: none;
+    margin-top: 14px;
+}
+
+.list ul li {
+    margin-top: 7px;
+}
+
+.link a {
+    text-decoration: none;
+    font-size: 14px;
+    margin: 0 0 7px -30px;
+    transition: all 0.5s ease;
+}
+
+.list a:hover {
+    padding-left: 7px;
+}
+
+.promocode-box {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.promocode-box input {
+    height: 100%;
+    width: 100%;
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    background-color: #fff;
+    padding: 7px 15px 7px 20px;
+    border-top-left-radius: 50rem !important;
+    border-bottom-left-radius: 50rem !important;
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+    border: 2px solid #2287D0;
+}
+
+div.btn {
+    border-top-right-radius: 50rem !important;
+    border-bottom-right-radius: 50rem !important;
+}
+
+
+@media screen and (max-width: 1180px) {
+    .all-links {
+        padding: 10px 20px;
+    }
+
+    .all-links .row {
+        flex-direction: column;
+    }
+
+    .all-links .row .col-lg-3 {
+        width: 100%;
+    }
+
+    .all-links .title {
+        width: 100%;
+        cursor: pointer;
+    }
+
+    .all-links .fa-angle-down {
+        opacity: 1;
+        font-size: 25px;
+        font-weight: 400;
+        cursor: pointer;
+        float: right;
+        transition: all 0.5s ease;
+    }
+
+    .all-links .fa-angle-down:hover {
+        box-shadow: 0 0 15px 5px #dbdbdb;
+        border-radius: 3%;
+    }
+
+    .list {
+        width: 100% !important;
+        border-bottom: #c3c2c2 solid 1px;
+        padding: 17px;
+    }
+
+    .list ul {
+        min-height: 80px;
+        display: none;
+    }
+
+    [id^="btn"]:checked + ul {
+        display: block;
+    }
+
+    hr {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .all-links {
+        width: 100% !important;
+    }
+
+    footer {
+        padding: 0 !important;
+    }
+
+    .promocode-box {
+        width: 75% !important;
+        margin: auto;
+    }
+
+}

@@ -1,0 +1,48 @@
+<app-navbar></app-navbar>
+<div *ngIf="isLoading"
+  class="spinner position-fixed  w-100 h-100 d-flex justify-content-center align-items-center  mt-5 pt-5 bg-white">
+  <!-- show spinner when loading is true -->
+  <app-spinner></app-spinner>
+</div>
+<!-- productDetails.message -->
+<div *ngIf="doseMessage; else doseDetails" class="results w-100 ">
+  <div class="container  mt-5 py-5 ">
+    <div class=" w-75  m-auto p-3 mt-2 text-center border border-primary ">
+      {{productDetails.message}}
+    </div>
+  </div>
+</div>
+
+<ng-template #doseDetails>
+  <div class="results w-100 ">
+    <div class="container  mt-5 py-5 ">
+      <div class=" w-75  m-auto ">
+        <h5>Weight: &nbsp;&nbsp;&nbsp; <span class="h6"> {{productDetails.weight}}</span> </h5>
+        <h4 class="text-center bg-grey py-1 my-1 text-white">Composition</h4>
+        <p>{{productDetails.product.composition}}</p>
+        <h4 class="text-center bg-grey py-1 my-1 text-white">Dose</h4>
+
+        <div *ngFor="let dose of productDetails.dose ">
+          <h5>{{dose.indication}} <br>
+          </h5>
+          <p>{{dose.dose}}</p>
+        </div>
+        <div class="d-flex w-100">
+          <div class="w-50">
+            <h4 class="text-center bg-grey py-1 my-1 text-white">Pregnancy</h4>
+            <p class="text-center">{{productDetails.product.pregnancy}}</p>
+          </div>
+          <div class="w-50 ms-2">
+            <h4 class="text-center bg-grey py-1 my-1 text-white">Lacation</h4>
+            <p class="text-center">{{productDetails.product.lactation}}</p>
+          </div>
+        </div>
+        <h4 class="text-center bg-grey py-1 my-1 text-white">More trade name in Egypt</h4>
+        <p>{{ productDetails.product.more_trade_names ? productDetails.product.more_trade_names : 'Not found' }}</p>
+        <h5 class="refrence text-center rounded-pill py-1 my-1">Refrence and more information </h5>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<app-footer></app-footer>

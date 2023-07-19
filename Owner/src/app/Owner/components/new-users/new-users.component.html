@@ -1,0 +1,138 @@
+<div class="">
+  <div class="row m-0 ">
+    <div class="col-lg-3 col-1 p-0">
+      <app-sidebar-owner></app-sidebar-owner>
+    </div>
+
+    <div class="col-lg-9 col-11 mx-auto ">
+      <div class="container-lg box">
+
+        <div class="head-one d-flex align-items-center justify-content-between">
+          <h3>New Users Not Verified Analytics</h3>
+        </div>
+
+        <div class="parent">
+
+          <div class="child d-flex flex-column" (click)="showNewUserAll()">
+            <div class="content">{{NewUserStats.total_users_not_verify}}</div>
+            <div class="icon">
+              Total Number of New Users
+            </div>
+          </div>
+
+          <div class="child d-flex flex-column" (click)="showNewUserToday()">
+            <div class="content">{{NewUserStats.new_user_today}}</div>
+            <div class="icon">
+              Added This Day
+            </div>
+          </div>
+
+          <div class="child d-flex flex-column" (click)="showNewUserMonth()">
+            <div class="content">{{NewUserStats.new_user_month}}</div>
+            <div class="icon">
+              Added This Month
+            </div>
+          </div>
+
+          <div class="child  d-flex flex-column" (click)="showNewUserYear()">
+            <div class="content">{{NewUserStats.new_user_year}}</div>
+            <div class="icon">
+              Added This Year
+            </div>
+          </div>
+        </div>
+
+
+        <!-- All NewUser -->
+        <div class="table-wrapper childs" *ngIf="showAll">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let user of NewUserAll">
+              <tr>
+                <td>
+                  <h6>{{user.first_name}} {{user.last_name}}</h6>
+                </td>
+                <td>
+                  <h6>{{user.email}}</h6>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+
+        <!-- Today NewUser -->
+        <div class="table-wrapper childs" *ngIf="showToday">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let user of NewUserDay">
+              <tr>
+                <td>
+                  <h6>{{user.first_name}} {{user.last_name}}</h6>
+                </td>
+                <td>
+                  <h6>{{user.email}}</h6>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Month NewUser -->
+        <div class="table-wrapper childs" *ngIf="showMonth">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let user of NewUserMonth">
+              <tr>
+                <td>
+                  <h6>{{user.first_name}} {{user.last_name}}</h6>
+                </td>
+                <td>
+                  <h6>{{user.email}}</h6>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Year NewUser -->
+        <div class="table-wrapper childs" *ngIf="showYear">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let user of NewUserYear">
+              <tr>
+                <td>
+                  <h6>{{user.first_name}} {{user.last_name}}</h6>
+                </td>
+                <td>
+                  <h6>{{user.email}}</h6>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

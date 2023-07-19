@@ -1,0 +1,218 @@
+.sidebar {
+  height: 100%;
+  background-color: #fff;
+  box-shadow: 0 12px 30px rgba(35, 102, 209, 0.1);
+  min-height: 100vh;
+}
+
+:root {
+  --blue-color: blue !important;
+}
+
+.title {
+  width: 100%;
+  padding: 15px;
+}
+
+.title h3 {
+  font-size: 24px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0 0 0 10px;
+  color: rgb(49, 90, 81);
+
+}
+
+.title img {
+  width: 50px !important;
+  height: 50px !important;
+}
+
+.title .fa-xmark {
+  display: none;
+}
+
+.nav-list {
+  padding: 8px 0;
+}
+
+.nav-list li {
+  padding: 20px 10px;
+  list-style: none;
+  transition: all 0.4s ease;
+  cursor: pointer;
+
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  position: relative;
+  padding: 10px;
+  transition: background-color 0.3s ease;
+  color: #406667;
+}
+
+li::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background-color: rgba(237, 236, 236, 0.8);
+  transition: width 0.3s ease;
+  z-index: 1; /* change this */
+}
+
+li:hover::before {
+  width: 100%;
+  color: #406667;
+}
+
+.nav-link{
+  position: relative;
+  z-index: 100;
+}
+
+.nav-list li .icon {
+  font-size: 20px;
+  cursor: pointer;
+  min-width: 60px;
+  text-align: center;
+  color: rgb(97, 135, 127);
+}
+
+.nav-list li .link-name {
+  color: rgb(49, 90, 81);
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.fa-circle-chevron-left {
+  margin-top: 20px;
+  background-color: rgb(204, 221, 205);
+  cursor: pointer;
+  width: 35px;
+  height: 30px;
+  text-align: center;
+  color: #406667;
+  display: none;
+}
+
+
+
+
+
+@media (max-width:992px) {
+
+
+  .title h3 {
+    font-size: 22px;
+  }
+
+
+
+}
+
+@media (max-width: 805px) {
+  .sidebar {
+    width: 100%;
+  }
+
+  .nav-list li .icon {
+    min-width: 30px;
+  }
+}
+
+@media (max-width: 992px) {
+  .nav-list li .icon {
+    min-width: 20px;
+    font-size: 14px;
+  }
+
+  .nav-list li .link-name {
+    font-size: 16px;
+  }
+
+  .title h3 {
+    font-size: 18px;
+  }
+
+  .title img {
+    width: 40px !important;
+    height: 40px !important;
+  }
+
+  hr {
+    margin: 0px;
+  }
+}
+
+@media (max-width: 992px) {
+  .sidebar {
+    display: none;
+  }
+
+  .fa-circle-chevron-left {
+    display: block;
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 10px 5px;
+  }
+
+  .close {
+    display: none;
+  }
+
+  .showList {
+    position: fixed;
+    display: block;
+    width: 30%;
+    z-index: 100;
+    overflow-y: auto;
+  }
+
+
+
+  .title {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  .title .title-pharma {
+    font-size: 16px;
+  }
+
+  .showList .icon {
+    display: none;
+  }
+
+  .showList li {
+    padding: 15px 20px;
+    list-style: none;
+    transition: all 0.4s ease;
+  }
+
+  .title .fa-xmark {
+    display: block;
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 560px) {
+  .showList {
+    width: auto;
+  }
+}
+
+i,
+.fa-xmark {
+  cursor: pointer !important;
+}

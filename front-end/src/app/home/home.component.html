@@ -1,0 +1,185 @@
+<app-navbar></app-navbar>
+<!-- Our announce. ibrahim -->
+<div *ngIf="isLoading"
+  class="spinner position-fixed  w-100 h-100 d-flex justify-content-center align-items-center  mt-5 pt-5 bg-white">
+  <!-- show spinner when loading is true -->
+  <app-spinner></app-spinner>
+</div>
+
+<section id="announce" class="announce my-5 py-5 m-auto">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-8 col-sm-12 d-flex flex-column align-items-end">
+        <div id="announcecarseoul" class="carousel slide w-100" data-bs-ride="carousel">
+          <div class="carousel-inner h-100">
+            <div class="carousel-item active h-100" *ngFor="let announce of announcements">
+              <div class="img-1 rounded-4 h-100">
+                <div class="announce-content ms-4 w-50 position-relative top-50 translate-middle-y">
+                  <p>New</p>
+                  <h3 class="text-uppercase">{{ announce.head }}</h3>
+                  <p>{{ announce.details }}</p>
+                  <button class="btn btn-outline-primary rounded-pill my-3 px-4">
+                    More
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-indicators position-static text-center">
+            <button type="button" data-bs-target="#announcecarseoul" data-bs-slide-to="0" class="active"
+              aria-current="true" aria-label="Slide 1"></button>
+
+            <button type="button" data-bs-target="#announcecarseoul" data-bs-slide-to="1" aria-label="Slide 2"></button>
+
+            <button type="button" data-bs-target="#announcecarseoul" data-bs-slide-to="2" aria-label="Slide 3"></button>
+
+            <button type="button" data-bs-target="#announcecarseoul" data-bs-slide-to="3" aria-label="Slide 4"></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xl-4 right-side d-xl-flex flex-xl-column justify-xl-content-start d-none">
+        <div class="sale-one rounded-4 w-100">
+          <div class="announce-content ms-2 position-relative top-50 translate-middle-y">
+            <p class="text-uppercase">sale on all products</p>
+            <h4 class="text-uppercase">payot</h4>
+          </div>
+        </div>
+
+        <div class="sale-two rounded-4 my-2 w-100">
+          <div class="announce-content ms-2 w-50 position-relative top-50 translate-middle-y">
+            <p class="h4">Search for suitable medications by symptoms</p>
+            <button class="btn btn-outline-primary rounded-pill btnSearch">
+              Search
+            </button>
+          </div>
+        </div>
+
+        <div class="sale-three rounded-4">
+          <div class="row p-o m-0 g-0 h-100 d-flex justify-content-center align-items-center">
+            <div class="col-6 d-flex justify-content-center">
+              <div class="percentage">
+                <span class="text-uppercase">-{{ discounts }}%</span>
+              </div>
+            </div>
+            <div class="col-6 d-flex justify-content-center">
+              <div class="discount">
+                <span class="text-uppercase">discount</span>
+                <p>For all products when ordering online</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div>
+  <!-- search -->
+
+  <input [(ngModel)]="searchTerm" type="text" placeholder="Search by Name ... " class="form-control w-75 mx-auto my-4"
+    (input)="showAllSlider = searchTerm === ''; showSearchResults = searchTerm !== ''">
+
+  <app-all-slider *ngIf="showAllSlider"></app-all-slider>
+
+  <div class="container" *ngIf="showSearchResults && allProducts.length > 0">
+    <div class="row ">
+      <div class="col-md-4  col-sm-6 col-12 col-lg-3 ms-sm-0 ms-4 product "
+        *ngFor="let product of allProducts  | productName : searchTerm ">
+        <app-all-products [product]="product" [addToWishList]="wishList.indexOf(product.id) >=0"></app-all-products>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center" *ngIf="showSearchResults && (allProducts | productName: searchTerm).length === 0">
+    <img class="w-100 " src="../../assets/notFound/undraw_empty_re_opql.svg" height="550" alt="">
+  </div>
+  <!--  end search -->
+
+  <app-category></app-category>
+  <!-- questions ibrahim-->
+  <section class="questions">
+    <div class="container">
+      <div class="row d-flex justify-content-center align-items-center flex-lg-row flex-column-reverse">
+        <div class="col-lg-3 d-lg-block d-none">
+          <div class="img">
+            <img class="w-100"
+              src="../../assets/imgs/patient-card-medication-case-test-jar-flasks_81522-4836-removebg-preview.png"
+              alt="" />
+          </div>
+        </div>
+        <div class="col-lg-6 col-12 d-flex flex-column align-items-center my-lg-0 my-4 text-center">
+          <h5>Do you have any questions?</h5>
+          <p>Enter your number and we will answer all your questions</p>
+          <div class="ques-box position-relative d-flex justify-content-center">
+            <i class="fa-solid fa-phone ques-icon"></i>
+            <input class="" type="text" placeholder="+2 (01)  ___  __  __" />
+            <div class="btn btn-primary w-50" type="button">Call back</div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-sm-12 d-flex justify-content-center">
+          <div class="img">
+            <img class="w-100"
+              src="../../assets/imgs/shutterstock_1587854419-Converted-e1634759595898-removebg-preview.png" alt="" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- information ibrahim-->
+  <section class="information">
+    <div class="container-lg">
+      <div class="row my-5">
+        <div class="col-md-6 col-sm-12">
+          <p class="mb-5 desc">
+            Get answers and advices from professional consultants.
+          </p>
+          <div class="contact-info border-bottom">
+            <div class="info d-flex py-4">
+              <span class="contact-icon">
+                <i class="fa-regular fa-map fa-2xl contact-icon"></i>
+              </span>
+              <div class="info-desc ms-3 mb-4">
+                <h6 class="h4">Address</h6>
+                <span>1650 Lombard Street, San Francisco, CA 94123</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-info border-bottom">
+            <div class="info d-flex py-4">
+              <span class="contact-icon">
+                <i class="fa-solid fa-mobile-screen-button fa-2xl"></i>
+              </span>
+              <div class="info-desc ms-3">
+                <h6 class="h4">Phone</h6>
+                <span>+1 (415) 876-3250 / +1 (415) 876-3251</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-info">
+            <div class="info d-flex py-4">
+              <span class="contact-icon">
+                <i class="fa-regular fa-envelope fa-2xl"></i>
+              </span>
+              <div class="info-desc ms-3">
+                <h6 class="h4">Say Hello</h6>
+                <span>email@sitename.com</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-sm-12">
+          <div class="information-maps">
+            <iframe class="rounded-4 w-100"
+              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d11880.492291371422!2d12.4922309!3d41.8902102!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x28f1c82e908503c4!2sColosseo!5e0!3m2!1sit!2sit!4v1524815927977"
+              width="600" height="450" frameborder="0" style="border: 0" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <app-footer></app-footer>

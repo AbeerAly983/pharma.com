@@ -1,0 +1,101 @@
+<div>
+  <div class="row m-0">
+    <div class="col-lg-3 col-1 p-0">
+      <app-sidebar-admin></app-sidebar-admin>
+    </div>
+    <div class="col-lg-9 col-11 mx-auto ">
+      <div class="container-lg box">
+
+        <div class="head-one d-flex align-items-center justify-content-between">
+          <h3>Live Session</h3>
+        </div>
+
+        <div class="back-edit" routerLink="/admin/session">
+          <i class="fa-solid fa-angles-left"></i>
+          <a style="margin-left: 5px;">Back</a>
+        </div>
+        <div class="edit-profile">
+          <h3>Live Session</h3>
+
+
+          <form #userForm="ngForm" (ngSubmit)="onsubmit(userForm.value)" class="form" ngNativeValidate>
+
+            <div class="alert alert-success" role="alert" *ngIf="valid">
+              Your live-session is added sucessfully
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">URL</label>
+              <input type="text" class="form-control input" name="url" #url="ngModel"
+                [class.is-invalid]="url.invalid && url.touched" [ngModel] required>
+              <div *ngIf="url.errors && url.touched">
+                <small class="text-danger" *ngIf="url.errors?.['required']">
+                  Please enter url
+                </small>
+                <small class="text-danger" *ngIf="url.errors?.['pattern']">
+                  Please enter valid url
+                </small>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Title</label>
+              <input type="text" class="form-control input" name="title" #title="ngModel"
+                [class.is-invalid]="title.invalid && title.touched" [ngModel] pattern="[0-9a-zA-Z\s-_.,']{3,}" required>
+
+              <div *ngIf="title.errors && title.touched">
+                <small class="text-danger" *ngIf="title.errors?.['required']">
+                  Please enter title
+                </small>
+                <small class="text-danger" *ngIf="title.errors?.['pattern']">
+                  Please enter valid title
+                </small>
+              </div>
+            </div>
+
+
+
+            <div class="mb-3">
+              <label class="form-label">Description</label>
+              <textarea type="text" class="form-control input" name="description" #description="ngModel"
+                [class.is-invalid]="description.invalid && description.touched" [ngModel]
+                pattern="[0-9a-zA-Z\s-_.,':]{4,}" required>
+              </textarea>
+              <div *ngIf="description.errors && description.touched">
+                <small class="text-danger" *ngIf="description.errors?.['required']">
+                  Please enter description
+                </small>
+                <small class="text-danger" *ngIf="description.errors?.['pattern']">
+                  Please enter valid description</small>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Date</label>
+              <input type="date" class="form-control input" name="date" #date="ngModel"
+                [class.is-invalid]="date.invalid && date.touched" [ngModel] required>
+              <div *ngIf="date.errors && date.touched">
+                <small class="text-danger" *ngIf="date.errors?.['required']">
+                  Please enter date
+                </small>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Time</label>
+              <input type="time" class="form-control input" name="time" #time="ngModel"
+                [class.is-invalid]="time.invalid && time.touched" [ngModel] required>
+              <div *ngIf="time.errors && time.touched">
+                <small class="text-danger" *ngIf="time.errors?.['required']">
+                  Please enter time
+                </small>
+              </div>
+            </div>
+
+
+            <input type="submit" class="form-control" value="Submit">
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

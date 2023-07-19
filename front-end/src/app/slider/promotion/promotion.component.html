@@ -1,0 +1,57 @@
+<div class="slider position-relative">
+  <div>
+    <img src="assets/{{ productDiscount.product.photo }}" alt="photo" routerLink="/details/{{ productDiscount.id }}" />
+    <div class="item ">
+      <div class="full" *ngIf="addToWishList" (click)="deleteFromWishList(productDiscount.id);">
+        <i class="fa-solid fa-heart"> </i>
+      </div>
+      <div class="empty" *ngIf="!addToWishList" (click)="addtoWishList(productDiscount.id);">
+        <i class="fa-regular fa-heart"> </i>
+      </div>
+    </div>
+    <div class="dicount">
+      <label>- {{ productDiscount.presentage_Discount }}%</label>
+    </div>
+
+    <div class="details" routerLink="/details/{{ productDiscount.id }}">
+      <h3 class="name">{{ productDiscount.product.name }}</h3>
+      <p class="description">{{ productDiscount.product.description }}</p>
+      <div>
+
+        <div class="discountclass" *ngIf="productDiscount.discount_price !== null">
+          <h5 class="price">{{ productDiscount.discount_price }}</h5>
+          <h5 class="pricedel">
+            <del>{{ productDiscount.product.price }}</del>
+          </h5>
+        </div>
+
+        <div *ngIf="productDiscount.discount_price === null">
+          <h5 class="price">{{ productDiscount.product.price }}</h5>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="quantity">
+    <button class="add" (click)="addtoCart(productDiscount.id)">
+      <span *ngIf="!loading">
+        <i class="fas fa-plus"></i>
+      </span>
+      <span *ngIf="loading">
+        <i class="fa-solid fa-circle-notch fa-spin"></i>
+      </span>
+      Add To Cart
+    </button>
+  </div>
+
+  <div *ngIf="showSuccessMessage" class="success-message text-main bg-white border-primary">
+    Product added to cart!
+  </div>
+  <div *ngIf="showAddMessage" class="success-message text-main bg-white border-primary">
+    Product added to WishList!
+  </div>
+  <div *ngIf="showDeleteMessage" class="success-message text-main bg-white border-primary">
+    Product deleted from WishList!
+  </div>
+
+</div>

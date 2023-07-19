@@ -1,0 +1,31 @@
+.container {
+  margin-top: 150px !important;
+}
+.container .product-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(31%, 2fr));
+  gap: 1rem;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+.header .title {
+  margin: 3rem 0;
+  font-weight: bold;
+  font-size: 25px;
+  color: #2f2f2f;
+}
+@media screen and (max-width: 768px) {
+  .container .product-container {
+    grid-template-columns: repeat(2, 2fr);
+  }
+  .details {
+    flex-direction: column;
+    padding: 10px 14px;
+    text-align: left;
+  }
+}
+@media screen and (max-width: 485px) {
+  .container .product-container {
+    grid-template-columns: repeat(1, 2fr);
+  }
+}

@@ -1,0 +1,63 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <div class="checkout">
+        <h3>BILLING DETAILS</h3>
+        <form #userForm="ngForm" (ngSubmit)="onsubmit(userForm.value)" class="form" ngNativeValidate>
+
+            <div class="alert alert-success" role="alert" *ngIf="valid">
+                Order confirmation is done sucessfully check your orders
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">City</label>
+                <input type="text" class="form-control" name="city" #city="ngModel"
+                    [class.is-invalid]="city.invalid && city.touched" [(ngModel)]="user.city" required
+                    pattern="[0-9a-zA-Z\s]{3,}">
+
+                <div *ngIf="city.errors && city.touched">
+                    <small class="text-danger" *ngIf="city.errors?.['required']">City is required</small>
+                    <small class="text-danger" *ngIf="city.errors?.['pattern']">Please enter valid city</small>
+                </div>
+            </div>
+
+
+
+            <div class="mb-3">
+                <label class="form-label">Address</label>
+                <input type="text" class="form-control" name="street" #street="ngModel"
+                    [class.is-invalid]="street.invalid && street.touched" [(ngModel)]="user.street" required
+                    pattern="[0-9a-zA-Z\s]{4,}">
+
+                <div *ngIf="street.errors && street.touched">
+                    <small class="text-danger" *ngIf="street.errors?.['required']">Address is required</small>
+                    <small class="text-danger" *ngIf="street.errors?.['pattern']">Please enter valid city</small>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Phone Number</label>
+
+                <div class=" input-group mb-3"><span class="input-group-text" id="basic-addon1">+20</span>
+                    <input type="tel" class="form-control" name="phone" #phone="ngModel"
+                        [class.is-invalid]="phone.invalid && phone.touched" [(ngModel)]="user.phone" required
+                        pattern="^(1|01)[0-2,5]{1}[0-9]{8}$">
+                </div>
+
+                <div *ngIf="phone.errors && phone.touched">
+                    <small class="text-danger" *ngIf="phone.errors?.['required']">Phone number is required</small>
+                    <small class="text-danger" *ngIf="phone.errors?.['pattern']">Please enter valid
+                        phone number</small>
+                </div>
+            </div>
+
+            <input type="submit" class="form-control" value="Submit">
+        </form>
+    </div>
+
+
+
+
+</div>
+
+
+<app-footer></app-footer>

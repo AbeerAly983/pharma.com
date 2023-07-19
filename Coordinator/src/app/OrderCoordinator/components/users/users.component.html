@@ -1,0 +1,51 @@
+<div class="all">
+  <div class="row m-0">
+    <div class="col-lg-3 col-1 p-0">
+      <app-sidebar-coord></app-sidebar-coord>
+    </div>
+    <div *ngIf="allUsers.length === 0" class="text-center fw-bold mt-5">
+      <img class="w-100 " src="../../../assets/notFound/undraw_empty_re_opql.svg" height="550" alt="">
+    </div>
+
+    <div class="col-lg-8 col-11 mx-auto" *ngIf="allUsers.length > 0">
+      <div class="container-lg box">
+
+        <div class="head-one d-flex align-items-center justify-content-between">
+          <h3>Users</h3>
+        </div>
+        <div class="table-wrapper childs">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">User ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">phone</th>
+                <th scope="col">city</th>
+                <th>Street</th>
+              </tr>
+            </thead>
+            <tbody [routerLink]="['/orderCoordinator/users/order/',user.user_id]" *ngFor="let user of allUsers">
+              <tr>
+                <td>
+                  <h6>
+                    {{user.user_id}}</h6>
+                </td>
+                <td>
+                  <h6>{{user.user_name}}</h6>
+                </td>
+                <td>
+                  <h6>{{user.phone}}</h6>
+                </td>
+                <td>
+                  <h6>{{user.city}}</h6>
+                </td>
+                <td>
+                  <h6>{{user.street}}</h6>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>

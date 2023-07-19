@@ -1,0 +1,164 @@
+<div>
+  <div class="row m-0">
+    <div class="col-lg-3 col-1 p-0">
+      <app-sidebar-admin></app-sidebar-admin>
+    </div>
+
+    <div class="col-lg-9 col-11 mx-auto ">
+
+      <div class="container-lg box">
+        <div class="back-edit" routerLink="/admin/doseCalculator">
+          <i class="fa-solid fa-angles-left"></i>
+          <a style="margin-left: 5px;">Back</a>
+        </div>
+        <div class="head-one d-flex align-items-center justify-content-between">
+          <h3>Dose-Calculator</h3>
+          <div class="add-oc" routerLink="/admin/doseCalculator/add">Add Dose-Calculator</div>
+        </div>
+        <div class="title">
+          <h3>Product</h3>
+        </div>
+        <div class="table-wrapper childs">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Product Name</th>
+                <th scope="col">Composition</th>
+                <th scope="col">Pregnancy</th>
+                <th scope="col">Lactation</th>
+                <th scope="col">More Names</th>
+                <th>Edit</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <h6>{{product.id}}</h6>
+                </td>
+                <td>
+                  <div>
+                    <h6>{{product.ProductName}}</h6>
+                  </div>
+                </td>
+                <td>
+                  <h6>{{product.composition}}</h6>
+                </td>
+                <td>
+                  <h6>{{product.pregnancy}}</h6>
+                </td>
+                <td>
+                  <h6>{{product.lactation}}</h6>
+                </td>
+                <td>
+                  <h6>{{product.more_trade_names}}</h6>
+                </td>
+                <td>
+                  <div>
+                    <a routerLink="/admin/doseCalculator/edit/ProductCase/{{product.id}}"><i
+                        class="fa-solid fa-pen-to-square"></i></a>
+                  </div>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="container-lg box">
+        <div class="title">
+          <h3>Indication</h3>
+        </div>
+        <div class="table-wrapper childs">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Indication-ID</th>
+                <th scope="col">Indication</th>
+                <th>Setting</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let calc of calculator">
+              <tr>
+                <td>
+                  <h6>{{calc.indication_id}}</h6>
+                </td>
+                <td>
+                  <div>
+                    <h6>{{calc.indication}}</h6>
+                  </div>
+                </td>
+                <td>
+                  <div>
+                    <a routerLink="/admin/doseCalculator/edit/ProductIndication/{{calc.indication_id}}"><i
+                        class="fa-solid fa-pen-to-square"></i></a>
+                    <a (click)="valid=true; idCheckAlert=calc.indication_id"><i class="fa-solid fa-trash"></i></a>
+
+                  </div>
+                </td>
+              </tr>
+              <div class="alert alert-danger" role="alert" *ngIf="valid && idCheckAlert==calc.indication_id">
+                <p>Are you sure, you want to delete item?</p>
+                <button type="button" class="btn btn-outline-success" (click)="valid=false">Cancel</button>
+                <button type="button" class="btn btn-outline-danger"
+                  (click)="deleteIndication(calc.indication_id,calc)">OK</button>
+              </div>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="container-lg box">
+        <div class="title">
+          <h3>Dose</h3>
+        </div>
+        <div class="table-wrapper childs">
+          <table class="table">
+
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Indication-ID</th>
+                <th scope="col">Dose</th>
+                <th>Setting</th>
+              </tr>
+            </thead>
+
+            <tbody *ngFor="let calc of calculator">
+              <tr *ngFor="let dose of calc.doses">
+                <td>
+                  <h6>{{dose.id}}</h6>
+                </td>
+                <td>
+                  <h6>{{dose.indication_id}}</h6>
+                </td>
+                <td>
+                  <div>
+                    <h6>{{dose.dose}}</h6>
+                  </div>
+                </td>
+                <td>
+                  <div class="d-flex justify-content-end gap-3 limt-width">
+                    <a routerLink="/admin/doseCalculator/edit/ProductDose/{{dose.id}}"><i
+                        class="fa-solid fa-pen-to-square"></i></a>
+                    <a (click)="deleteDose(dose.id,dose)"><i class="fa-solid fa-trash"></i></a>
+
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+
+          </table>
+        </div>
+
+
+
+      </div>
+
+    </div>
+
+
+
+  </div>
+
+</div>

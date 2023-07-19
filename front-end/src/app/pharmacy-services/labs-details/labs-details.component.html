@@ -1,0 +1,24 @@
+<app-navbar ></app-navbar>
+<div  *ngIf="isLoading"  class="spinner position-fixed  w-100 h-100 d-flex justify-content-center align-items-center  mt-5 pt-5 bg-white"> <!-- show spinner when loading is true -->
+  <app-spinner></app-spinner>
+</div>
+<div class="container my-5 py-5  ">
+  <div class="row align-items-center py-4">
+    <div class="col-md-4">
+      <div class="img">
+        <img class="w-100" src="assets/{{labDetails.photo}}" alt="">
+      </div>
+    </div>
+
+    <div class="col-md-8 p-4">
+      <h2 class="h4 fw-bolder mb-2 text-primary">The {{labDetails.name | uppercase}} Lab</h2>
+      <p class=" text-grey fs-5 text-capitalize">{{labDetails.type_of_medical_analyses }}</p>
+      <p class="fs-5 ">Address: <span class="text-grey">{{labDetails.street}},{{labDetails.residential_area}},{{labDetails.city}} </span></p>
+      <p class=" fs-5">Appointment: <span class="text-grey">{{labDetails.appointment }}</span></p>
+      <p class=" fs-5">Time: <span class="text-grey">{{labDetails.time }}</span></p>
+      <p class="fs-5 ">Mobile Number for reservation: <span class="text-grey">{{labDetails.phone }}</span></p>
+    </div>
+  </div>
+
+</div>
+<app-footer></app-footer>

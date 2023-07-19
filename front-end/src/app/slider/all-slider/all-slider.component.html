@@ -1,0 +1,43 @@
+<section class="parent">
+  <div class="containers">
+    <div class="header">
+      <h2 class="title">Promotions</h2>
+      <a class="all-item" routerLink="/promotions">All Promotions</a>
+    </div>
+
+    <owl-carousel-o [options]="Options">
+      <ng-template carouselSlide *ngFor="let disProduct of discountProducts">
+        <app-promotion [productDiscount]="disProduct"
+          [addToWishList]="wishList.indexOf(disProduct.id) >=0"></app-promotion>
+      </ng-template>
+    </owl-carousel-o>
+  </div>
+</section>
+
+<section class="parent">
+  <div class="containers">
+    <div class="header">
+      <h2 class="title">Products</h2>
+      <a class="all-item" routerLink="/products">All Products</a>
+    </div>
+    <owl-carousel-o [options]="Options">
+      <ng-template carouselSlide *ngFor="let item of allproduct ">
+        <app-all-products [product]="item" [addToWishList]="wishList.indexOf(item.id) >=0"></app-all-products>
+      </ng-template>
+    </owl-carousel-o>
+  </div>
+</section>
+
+<section class="parent">
+  <div class="containers">
+    <div class="header">
+      <h2 class="title">New</h2>
+      <a class="all-item" routerLink="/new">All New</a>
+    </div>
+    <owl-carousel-o [options]="Options">
+      <ng-template carouselSlide *ngFor="let new of newProduct">
+        <app-news [newProduct]="new" [addToWishList]="wishList.indexOf(new.id) >=0"></app-news>
+      </ng-template>
+    </owl-carousel-o>
+  </div>
+</section>

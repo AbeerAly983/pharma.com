@@ -1,0 +1,29 @@
+<app-navbar></app-navbar>
+<div  *ngIf="isLoading"  class="spinner position-fixed  w-100 h-100 d-flex justify-content-center align-items-center  mt-5 pt-5 bg-white"> <!-- show spinner when loading is true -->
+  <app-spinner></app-spinner>
+</div>
+<!-- labs -->
+<div class="container my-5 pt-5 ">
+  <div *ngIf="labsList.length > 0">
+  <div class="row mt-5 pt-5">
+    <div class="d-flex ">
+      <input [(ngModel)]="labName" type="text" placeholder="Search by Name ... " class="form-control w-100 me-3 mx-auto my-4"   (input)=" showSearchResults = labName !== '' ">
+  </div>
+    <div  class="col-md-3  text-center" *ngFor="let itemlab of labsList |labNameSearch : labName">
+      <div class="product mb-4 p-4 bg-">
+        <a> <img class=" rounded-circle " width="100" height="100" src="assets/{{itemlab.photo}}" alt="{{itemlab.name}}"  [routerLink]="['/labDetails', itemlab.id]"> </a>
+          <p class="text-primary fw-bold font-sm text-capitalize h4 my-3">{{itemlab.name}}</p>
+          <h3 class="h6 fw-bold text-capitalize h6">{{itemlab.type_of_medical_analyses}}</h3>
+        <button  class="btn bg-primary text-white w-75 my-2 px-3 border-0"  [routerLink]="['/labDetails',itemlab.id]" > More Details </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="text-center" *ngIf="showSearchResults && (labsList | labNameSearch: labName).length === 0 ">
+  <img class="w-100 " src="../../assets/notFound/undraw_empty_re_opql.svg" height="550" alt="">
+</div>
+
+</div>
+
+<app-footer></app-footer>

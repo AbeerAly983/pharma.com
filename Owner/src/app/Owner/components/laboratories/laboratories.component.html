@@ -1,0 +1,250 @@
+<div class="">
+  <div class="row m-0 ">
+    <div class="col-lg-3 col-1 p-0">
+      <app-sidebar-owner></app-sidebar-owner>
+    </div>
+
+    <div class="col-lg-9 col-11 mx-auto ">
+      <div class="container-lg box">
+
+        <div class="head-one d-flex align-items-center justify-content-between">
+          <h3>Laboratories Analytics</h3>
+        </div>
+
+        <div class="parent">
+
+          <div class="child d-flex flex-column" (click)="showLabAll()">
+            <div class="content">{{LabStats.total_labs}}</div>
+            <div class="icon">
+              Total Number of Laboratories
+            </div>
+          </div>
+
+          <div class="child d-flex flex-column" (click)="showLabToday()">
+            <div class="content">{{LabStats.lab_today}}</div>
+            <div class="icon">
+              Added This day
+            </div>
+          </div>
+
+          <div class="child d-flex flex-column" (click)="showLabMonth()">
+            <div class="content">{{LabStats.lab_month}}</div>
+            <div class="icon">
+              Added This Month
+            </div>
+          </div>
+
+          <div class="child  d-flex flex-column" (click)="showLabYear()">
+            <div class="content">{{LabStats.lab_year}}</div>
+            <div class="icon">
+              Added This Year
+            </div>
+          </div>
+        </div>
+
+
+        <!-- All Lab -->
+        <div class="table-wrapper childs" *ngIf="showAll">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Photo</th>
+                <th scope="col">Name</th>
+                <th scope="col">Type</th>
+                <th scope="col">Appointment</th>
+                <th scope="col">Time</th>
+                <th scope="col">Phone</th>
+                <th scope="col">City</th>
+                <th scope="col">Residential Area</th>
+                <th scope="col">Street</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let lab of LabAll">
+              <tr>
+                <td>
+                  <img src="assets/{{lab.photo}}">
+                </td>
+                <td>
+                  <h6>{{lab.name}}</h6>
+                </td>
+                <td>
+                  <h6>{{lab.type_of_medical_analyses}}</h6>
+                </td>
+                <td>
+                  <h6>{{lab.appointment}}</h6>
+                </td>
+                <td>
+                  <h6>{{lab.time}}</h6>
+                </td>
+                <td>
+                  <h6>{{lab.phone}}</h6>
+                </td>
+                <td>
+                  <h6>{{lab.city}}</h6>
+                </td>
+                <td>
+                  <h6>{{lab.residential_area}}</h6>
+                </td>
+                <td>
+                  <h6>{{lab.street}}</h6>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+
+        <!-- Today Lab -->
+        <div class="table-wrapper childs" *ngIf="showToday">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Photo</th>
+                <th scope="col">Name</th>
+                <th scope="col">Type</th>
+                <th scope="col">Appointment</th>
+                <th scope="col">Time</th>
+                <th scope="col">Phone</th>
+                <th scope="col">City</th>
+                <th scope="col">Residential Area</th>
+                <th scope="col">Street</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let lab of LabDay">
+              <tr>
+                <td>
+                  <img src="assets/{{lab.photo}}">
+                </td>
+                <td>
+                  <h6>{{lab.name}}</h6>
+                </td>
+                <td>
+                  <h6>{{lab.type_of_medical_analyses}}</h6>
+                </td>
+                <td>
+                  <h6>{{lab.appointment}}</h6>
+                </td>
+                <td>
+                  <h6>{{lab.time}}</h6>
+                </td>
+                <td>
+                  <h6>{{lab.phone}}</h6>
+                </td>
+                <td>
+                  <h6>{{lab.city}}</h6>
+                </td>
+                <td>
+                  <h6>{{lab.residential_area}}</h6>
+                </td>
+                <td>
+                  <h6>{{lab.street}}</h6>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Month Lab -->
+        <div class="table-wrapper childs" *ngIf="showMonth">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Photo</th>
+                <th scope="col">Name</th>
+                <th scope="col">Type</th>
+                <th scope="col">Appointment</th>
+                <th scope="col">Time</th>
+                <th scope="col">Phone</th>
+                <th scope="col">City</th>
+                <th scope="col">Residential Area</th>
+                <th scope="col">Street</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let lab of LabMonth">
+              <tr>
+                <td>
+                  <img src="assets/{{lab.photo}}">
+                </td>
+                <td>
+                  <h6>{{lab.name}}</h6>
+                </td>
+                <td>
+                  <h6>{{lab.type_of_medical_analyses}}</h6>
+                </td>
+                <td>
+                  <h6>{{lab.appointment}}</h6>
+                </td>
+                <td>
+                  <h6>{{lab.time}}</h6>
+                </td>
+                <td>
+                  <h6>{{lab.phone}}</h6>
+                </td>
+                <td>
+                  <h6>{{lab.city}}</h6>
+                </td>
+                <td>
+                  <h6>{{lab.residential_area}}</h6>
+                </td>
+                <td>
+                  <h6>{{lab.street}}</h6>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Year Lab -->
+        <div class="table-wrapper childs" *ngIf="showYear">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Photo</th>
+                <th scope="col">Name</th>
+                <th scope="col">Type</th>
+                <th scope="col">Appointment</th>
+                <th scope="col">Time</th>
+                <th scope="col">Phone</th>
+                <th scope="col">City</th>
+                <th scope="col">Residential Area</th>
+                <th scope="col">Street</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let lab of LabYear">
+              <tr>
+                <td>
+                  <img src="assets/{{lab.photo}}">
+                </td>
+                <td>
+                  <h6>{{lab.name}}</h6>
+                </td>
+                <td>
+                  <h6>{{lab.type_of_medical_analyses}}</h6>
+                </td>
+                <td>
+                  <h6>{{lab.appointment}}</h6>
+                </td>
+                <td>
+                  <h6>{{lab.time}}</h6>
+                </td>
+                <td>
+                  <h6>{{lab.phone}}</h6>
+                </td>
+                <td>
+                  <h6>{{lab.city}}</h6>
+                </td>
+                <td>
+                  <h6>{{lab.residential_area}}</h6>
+                </td>
+                <td>
+                  <h6>{{lab.street}}</h6>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

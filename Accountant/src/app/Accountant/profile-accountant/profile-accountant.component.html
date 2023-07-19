@@ -1,0 +1,261 @@
+<div>
+  <div class="row m-0">
+    <div class="col-lg-3 col-1 p-0">
+      <app-sidebar-accountant></app-sidebar-accountant>
+    </div>
+
+    <div class="col-lg-9 col-11 mx-auto ">
+      <div class="container-lg box">
+        <div class="profile">
+
+          <div class="profile-img">
+          </div>
+
+          <div class="profile-content">
+            <img src="assets/{{user.photo}}" alt="">
+            <h2>{{userShortData.first_name}} {{userShortData.last_name}}</h2>
+            <p style="color: #7E858B;">{{userShortData.email}}</p>
+          </div>
+
+        </div>
+        <div class="back-edit" *ngIf="showBack" (click)="showProfile()">
+          <i class="fa-solid fa-angles-left"></i>
+          <a style="margin-left: 5px;">Back</a>
+        </div>
+        <div class="edit-pass-email">
+          <div class="update_pass" (click)="showPass()">Edit password</div>
+          <div class="update_email" (click)="showEmail()">Edit email</div>
+        </div>
+
+
+        <div class="edit-profile">
+          <h3>EDIT PROFILE</h3>
+
+          <!-- update profile -->
+
+          <form #userForm="ngForm" (ngSubmit)="onsubmit(userForm.value)" class="form" ngNativeValidate
+            *ngIf="showEditProfile">
+
+            <div class="alert alert-success" role="alert" *ngIf="valid">
+              Your changed is updated sucessfully
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">First name</label>
+              <input type="text" class="form-control input" name="first_name" #fname="ngModel"
+                [class.is-invalid]="fname.invalid && fname.touched" [(ngModel)]="user.first_name" minlength="2"
+                required>
+
+              <div *ngIf="fname.errors && fname.touched">
+                <small class="text-danger" *ngIf="fname.errors?.['required']">
+                  Please enter first name
+                </small>
+                <small class="text-danger" *ngIf="fname.errors?.['minlength']">
+                  must contain at least 2 character
+                </small>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Second name</label>
+              <input type="text" class="form-control input" name="last_name" #lname="ngModel"
+                [class.is-invalid]="lname.invalid && lname.touched" [(ngModel)]="user.last_name" minlength="2" required>
+
+              <div *ngIf="lname.errors && lname.touched">
+                <small class="text-danger" *ngIf="lname.errors?.['required']">
+                  Please enter second name
+                </small>
+                <small class="text-danger" *ngIf="lname.errors?.['minlength']">
+                  must contain at least 2 character
+                </small>
+              </div>
+            </div>
+
+
+            <div class="mb-3">
+              <label class="form-label">Phone number</label>
+
+              <div class=" input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">+20</span>
+                <input type="tel" class="form-control input" name="phone" #phone="ngModel"
+                  [class.is-invalid]="phone.invalid && phone.touched" [(ngModel)]="user.phone"
+                  pattern="^(1|01)[0-2,5]{1}[0-9]{8}$" required>
+              </div>
+
+              <div *ngIf="phone.errors && phone.touched">
+                <small class="text-danger" *ngIf="phone.errors?.['required']">
+                  Please enter phone number
+                </small>
+                <small class="text-danger" *ngIf="phone.errors?.['pattern']">
+                  Please enter valid phone number
+                </small>
+              </div>
+            </div>
+
+            <div class="mb-3">
+
+              <label class="form-label">Photo</label>
+              <input type="file" class="form-control" accept="image/*" name="photo" #photo="ngModel"
+                [class.is-invalid]="photo.invalid && photo.touched" [ngModel] (change)="onPhotoSelected($event)">
+              <div *ngIf="photo.errors && photo.touched">
+                <small class="text-danger" *ngIf="photo.errors?.['pattern']">
+                  Please enter valid path of photo
+                </small>
+              </div>
+            </div>
+
+            <input type="submit" class="form-control" value="Submit">
+          </form>
+
+          <!-- update password -->
+
+          <form #userForm="ngForm" (ngSubmit)="onsubmitPass(userForm.value)" class="form update-pass" ngNativeValidate
+            *ngIf="showEditPass">
+
+            <div class="alert alert-success" role="alert" *ngIf="valid">
+              Password is updated sucessfully
+            </div>
+
+            <div class="alert alert-success" role="alert" *ngIf="inValid">
+              Old password is incorrect try again!
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Old password</label>
+              <div class=" input-group mb-3">
+                <input type="{{ showPassword ? 'text' : 'password' }}" [ngModel] class="form-control mb-0 "
+                  placeholder="Old password" pattern="\S{8,}" [class.is-invalid]="pass.invalid && pass.touched"
+                  #pass="ngModel" name="oldPassword" required>
+                <span class="input-group-text" (click)="toggleShowPassword()" *ngIf="showPassword">
+                  <i class="fa-regular fa-eye"></i>
+                </span>
+                <span class="input-group-text" (click)="toggleShowPassword()" *ngIf="!showPassword">
+                  <i class="fa-regular fa-eye-slash"></i>
+                </span>
+              </div>
+              <div *ngIf="pass.errors && pass.touched">
+                <small class="text-danger" *ngIf="pass.errors?.['required']">
+                  Old password is required</small>
+                <small class="text-danger" *ngIf="pass.errors?.['pattern']">
+                  Password must be at least 8 characters</small>
+              </div>
+            </div>
+
+
+            <div class="mb-3">
+              <label class="form-label">New password</label>
+              <div class=" input-group mb-3">
+                <input type="{{ showNewPassword ? 'text' : 'password' }}" [(ngModel)]="userModel.password"
+                  class="form-control mb-0 " placeholder="New password" pattern="\S{8,}"
+                  [class.is-invalid]="nPass.invalid && nPass.touched" #nPass="ngModel" name="password" required>
+                <span class="input-group-text" (click)="toggleShowNewPassword()" *ngIf="showNewPassword">
+                  <i class="fa-regular fa-eye"></i>
+                </span>
+                <span class="input-group-text" (click)="toggleShowNewPassword()" *ngIf="!showNewPassword">
+                  <i class="fa-regular fa-eye-slash"></i>
+                </span>
+              </div>
+              <div *ngIf="nPass.errors && nPass.touched">
+                <small class="text-danger" *ngIf="nPass.errors?.['required']">
+                  Password is required</small>
+                <small class="text-danger" *ngIf="nPass.errors?.['pattern']">
+                  Password must be at least 8 characters</small>
+              </div>
+            </div>
+
+
+            <div class="mb-3">
+              <label class="form-label">Repeat password</label>
+              <div class=" input-group mb-3">
+                <input type="{{ showRepeatPassword ? 'text' : 'password' }}" [ngModel] class="form-control mb-0 "
+                  placeholder="Confirm password" pattern="{{userModel.password}}"
+                  [class.is-invalid]="rPass.invalid && rPass.touched" #rPass="ngModel" name="password_confirmation"
+                  required>
+                <span class="input-group-text" (click)="toggleShowRepeatPassword()" *ngIf="showRepeatPassword">
+                  <i class="fa-regular fa-eye"></i>
+                </span>
+                <span class="input-group-text" (click)="toggleShowRepeatPassword()" *ngIf="!showRepeatPassword">
+                  <i class="fa-regular fa-eye-slash"></i>
+                </span>
+              </div>
+              <div *ngIf="rPass.errors && rPass.touched">
+                <small class="text-danger" *ngIf="rPass.errors?.['required']">
+                  Confirm Password is required</small>
+                <small class="text-danger" *ngIf="rPass.errors?.['pattern']">
+                  Password must be at least 8 characters</small>
+              </div>
+            </div>
+            <input type="submit" class="form-control" value="Submit">
+          </form>
+
+
+          <!-- update email  -->
+
+          <form #userForm="ngForm" (ngSubmit)="onsubmitEmail(userForm.value)" class="form" ngNativeValidate
+            *ngIf="showEditEmail">
+
+            <div class="alert alert-success" role="alert" *ngIf="inValid">
+              Your email is not changed!
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Email</label>
+              <input type="email" class="form-control input" name="email" #email="ngModel"
+                [class.is-invalid]="email.invalid && email.touched" [(ngModel)]="user.email"
+                pattern="^\w(\.?\w){2,}@[a-z]{2,10}\.com$" required>
+
+              <div *ngIf="email.errors && email.touched">
+                <small class="text-danger" *ngIf="email.errors?.['required']">Email is required</small>
+                <small class="text-danger" *ngIf="email.errors?.['pattern']">Please enter valid
+                  email</small>
+              </div>
+            </div>
+
+            <input type="submit" class="form-control" value="Submit">
+          </form>
+
+
+          <!-- verification -->
+
+          <div class="verification" *ngIf="showVerification">
+
+            <div class="text">
+              <h4 class="mt-3">Verification Code</h4>
+              <p>Enter the four digits code that we have sent through your email.</p>
+            </div>
+
+            <form class="form" (ngSubmit)="onVerify()" ngNativeValidate>
+
+              <div class="alert alert-success" role="alert" *ngIf="valid">
+                Email is verified successfully
+              </div>
+
+              <div class="alert alert-success" role="alert" *ngIf="inValid">
+                Verification code is incorrect, try again!
+              </div>
+
+              <div class="alert alert-success" role="alert" *ngIf="exist">
+                Verification code is resend again
+              </div>
+
+              <div class="d-flex flex-row mt-5 mb-5 gap-5 vrf-input">
+                <input type="text" class="form-control" required>
+                <input type="text" class="form-control" required>
+                <input type="text" class="form-control" required>
+                <input type="text" class="form-control" required>
+              </div>
+              <input type="submit" class="form-control" value="Continue">
+
+              <p class="resend" (click)="resendEmail()">Resend code</p>
+
+            </form>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,14 @@
+
+* {
+  box-sizing: border-box;
+}
+
+.box {
+  margin: 50px 0;
+}
+.col-lg-9 .row {
+  height: 50vh !important;
+}
+.col-lg-3 {
+  width: 20%;
+}

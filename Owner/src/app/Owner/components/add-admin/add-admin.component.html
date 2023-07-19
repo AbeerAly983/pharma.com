@@ -1,0 +1,169 @@
+<div class="">
+    <div class="row m-0 ">
+        <div class="col-lg-3 col-1 p-0">
+            <app-sidebar-owner></app-sidebar-owner>
+        </div>
+
+        <div class="col-lg-9 col-11 mx-auto ">
+            <div class="container-lg box">
+
+                <div class="head-one d-flex align-items-center justify-content-between">
+                    <h3>Admin Control</h3>
+                    <div class="add-oc" (click)="showDivAdmins()" *ngIf="showForm">Admins</div>
+                    <div class="add-oc" (click)="showDivAdmins()" *ngIf="showTable">Add Admin</div>
+                </div>
+
+                <div class="edit-profile" *ngIf="showForm">
+                    <h3>ADMIN PROFILE</h3>
+
+
+                    <form #userForm="ngForm" (ngSubmit)="onsubmit(userForm.value)" class="form" ngNativeValidate>
+
+                        <div class="alert alert-success" role="alert" *ngIf="valid">
+                            Admin is added sucessfully
+                        </div>
+                        <div class="alert alert-success" role="alert" *ngIf="inValid">
+                            Email is taken, choose another email!
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">First name</label>
+                            <input type="text" class="form-control input" name="first_name" #fname="ngModel"
+                                placeholder="First name" [class.is-invalid]="fname.invalid && fname.touched" [ngModel]
+                                minlength="2" required>
+                            <div *ngIf="fname.errors && fname.touched">
+                                <small class="text-danger" *ngIf="fname.errors?.['required']">
+                                    Please enter first name
+                                </small>
+                                <small class="text-danger" *ngIf="fname.errors?.['minlength']">
+                                    must contain at least 2 character
+                                </small>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Second name</label>
+                            <input type="text" class="form-control input" name="last_name" #lname="ngModel"
+                                placeholder="Second name" [class.is-invalid]="lname.invalid && lname.touched" [ngModel]
+                                minlength="2" required>
+                            <div *ngIf="lname.errors && lname.touched">
+                                <small class="text-danger" *ngIf="lname.errors?.['required']">
+                                    Please enter second name
+                                </small>
+                                <small class="text-danger" *ngIf="lname.errors?.['minlength']">
+                                    must contain at least 2 character
+                                </small>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input type="email" id="email" class="form-control input" placeholder="address@email.com"
+                                pattern="^\w(\.?\w){2,}@[a-z]{2,10}\.com$"
+                                [class.is-invalid]="email.invalid && email.touched" #email="ngModel" name="email"
+                                [ngModel] required>
+                            <div *ngIf="email.errors && email.touched">
+                                <small class="text-danger" *ngIf="email.errors?.['required']">Email is required</small>
+                                <small class="text-danger" *ngIf="email.errors?.['pattern']">Please enter valid
+                                    email</small>
+                            </div>
+                        </div>
+
+
+                        <div class="mb-3">
+                            <label class="form-label">Password</label>
+                            <div class=" input-group mb-3">
+                                <input type="{{ showPassword ? 'text' : 'password' }}" [(ngModel)]="userModel.password"
+                                    class="form-control mb-0" placeholder="Password" pattern="\S{8,}"
+                                    [class.is-invalid]="pass.invalid && pass.touched" #pass="ngModel" name="password"
+                                    required>
+                                <span class="input-group-text" (click)="toggleShowPassword()" *ngIf="showPassword">
+                                    <i class="fa-regular fa-eye"></i>
+                                </span>
+                                <span class="input-group-text" (click)="toggleShowPassword()" *ngIf="!showPassword">
+                                    <i class="fa-regular fa-eye-slash"></i>
+                                </span>
+                            </div>
+                            <div *ngIf="pass.errors && pass.touched">
+                                <small class="text-danger" *ngIf="pass.errors?.['required']">
+                                    Password is required</small>
+                                <small class="text-danger" *ngIf="pass.errors?.['pattern']">
+                                    Password must be at least 8 characters</small>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Repeat password</label>
+                            <div class=" input-group mb-3">
+                                <input type="{{ showRepeatPassword ? 'text' : 'password' }}" [ngModel]
+                                    class="form-control mb-0" placeholder="Password" pattern="{{userModel.password}}"
+                                    [class.is-invalid]="rnPass.invalid && rnPass.touched" #rnPass="ngModel"
+                                    name="password_confirmation" required>
+                                <span class="input-group-text" (click)="toggleShowRepeatPassword()"
+                                    *ngIf="showRepeatPassword">
+                                    <i class="fa-regular fa-eye"></i>
+                                </span>
+                                <span class="input-group-text" (click)="toggleShowRepeatPassword()"
+                                    *ngIf="!showRepeatPassword">
+                                    <i class="fa-regular fa-eye-slash"></i>
+                                </span>
+                            </div>
+                            <div *ngIf="rnPass.errors && rnPass.touched">
+                                <small class="text-danger" *ngIf="rnPass.errors?.['required']">
+                                    Confirm Password is required</small>
+                                <small class="text-danger" *ngIf="rnPass.errors?.['pattern']">
+                                    Password don't match</small>
+                            </div>
+                        </div>
+
+
+                        <input type="submit" class="form-control" value="Submit">
+                    </form>
+                </div>
+
+
+                <!-- Show Admins -->
+                <div class="table-wrapper childs" *ngIf="showTable">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Photo</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Phone</th>
+                                <th scope="col">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody *ngFor="let admin of Admins">
+                            <tr>
+                                <td>
+                                    <img src="assets/{{admin.photo}}">
+                                </td>
+                                <td>
+                                    <h6>{{admin.first_name}} {{admin.last_name}}</h6>
+                                </td>
+                                <td>
+                                    <h6>{{admin.email}}</h6>
+                                </td>
+                                <td>
+                                    <h6>{{admin.phone}}</h6>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-outline-success" *ngIf="admin.disabled == 1"
+                                        (click)="enable(admin.id)">Enable</button>
+                                    <button type="button" *ngIf="admin.disabled == 0" class="btn btn-outline-danger"
+                                        (click)="disable(admin.id)">
+                                        Disable</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>

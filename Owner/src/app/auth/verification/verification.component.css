@@ -1,0 +1,12 @@
+#verifyContent .form-control {
+    text-align: center;
+}
+
+#backLog {
+    display: flex;
+    cursor: pointer;
+}
+
+.cursor {
+    cursor: pointer;
+}

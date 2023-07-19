@@ -1,0 +1,47 @@
+<app-navbar></app-navbar>
+<div *ngIf="isLoading"
+  class="spinner position-fixed  w-100 h-100 d-flex justify-content-center align-items-center  mt-5 pt-5 bg-white">
+  <!-- show spinner when loading is true -->
+  <app-spinner></app-spinner>
+</div>
+<div class="container">
+  <div *ngIf="userShippedOrders.length === 0" class="text-center fw-bold pt-5">
+    <img class="w-100 " src="../../../assets/notFound/undraw_empty_re_opql.svg" height="550" alt="">
+  </div>
+  <table class="table" *ngIf="userShippedOrders.length > 0 ">
+    <thead>
+      <tr>
+        <th scope="col">Photo</th>
+        <th scope="col">Name</th>
+        <th scope="col">Price</th>
+        <th scope="col">quantity</th>
+        <th scope="col">Total Price</th>
+        <th scope="col">Shipped Date</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let order of userShippedOrders">
+      <tr>
+        <td>
+          <img src="assets/{{ order.product.photo }}" class="img-fluid rounded-start" alt="..." />
+        </td>
+        <td>{{ order.product.name }}</td>
+        <td>
+          <div class="card-text price">
+            <p>{{ order.price }}</p>
+            <span>
+              <small class="text-muted">
+                <del *ngIf="order.product.price !== null">
+                  {{ order.product.price }}
+                </del></small>
+            </span>
+          </div>
+        </td>
+        <td>{{ order.quantity }}</td>
+        <td>{{ order.totalPrice }}</td>
+        <td>{{ order.updated_at | date : "short" }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<app-footer></app-footer>

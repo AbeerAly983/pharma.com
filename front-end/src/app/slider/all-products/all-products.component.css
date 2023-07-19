@@ -1,0 +1,162 @@
+/* /Products slider style/ */
+
+.slider {
+  margin: 10px 0;
+  width: 90%;
+  display: inline-block;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 1px 0px;
+  border-radius: 1%;
+  position: relative;
+  padding: 12px;
+  border-radius: 3%;
+  height: 370px !important;
+}
+
+.slider:hover {
+  opacity: 1;
+  box-shadow: 0px 0px 5px 0px rgb(0 0 0 / 14%);
+}
+
+.slider img {
+  width: 150px !important;
+  height: 150px !important;
+  margin: auto;
+  object-fit: cover;
+}
+
+.item .full,
+.item .empty {
+  position: absolute;
+  top: 3%;
+  left: 83%;
+  padding: 5px;
+  color: #0694ff;
+  opacity:1;
+  font-size: 20px;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 14px;
+  text-align: left;
+}
+
+.name {
+  font-size: 18px;
+  font-weight: 500;
+  color: #333;
+}
+
+.description {
+  font-size: 15px;
+  color: #707070;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.code {
+  font-size: 15px;
+  color: #333;
+}
+
+.rating {
+  font-size: 12px;
+  text-align: right;
+}
+
+.rating .fa-star {
+  padding: 1px;
+  color: #ffe014;
+}
+
+.quantity {
+  text-align: center;
+}
+
+.btn:hover {
+  box-shadow: 0px 0px 5px 0px rgb(0 0 0 / 14%);
+}
+
+.qunt {
+  font-size: 20px;
+  opacity: 0;
+  padding: 10px;
+}
+
+.add {
+  text-align: center;
+  background: #0694ff;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  width: 140px;
+  height: 40px;
+  font-size: 13px;
+  transition: all 0.3s ease;
+  opacity: 0;
+  margin: 10px 5px 5px;
+}
+
+.add:active {
+  background: #0783e2;
+}
+
+.slider:hover .btn,
+.slider:hover .qunt,
+.slider:hover .add {
+  opacity: 1;
+}
+
+.dicount {
+  padding: 2px 6px;
+  font-size: 13px;
+  position: absolute;
+  top: 2%;
+  left: 5%;
+  color: #0694ff;
+  font-weight: bold;
+  border: 1px solid #0694ff;
+  border-radius: 20px;
+  margin-top: 12px;
+}
+@media screen and (max-width: 1280px) {
+  .item .full,
+  .item .empty,
+  .slider .btn,
+  .slider .qunt,
+  .slider .add {
+    opacity: 1;
+  }
+  .slider {
+    opacity: 1;
+    box-shadow: 0px 0px 5px 0px rgb(0 0 0 / 14%);
+    border-radius: 3%;
+    height: 400px !important;
+  }
+}
+
+.discountclass {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pricedel {
+  color: rgb(184, 181, 181);
+}
+
+
+.success-message {
+  position: absolute !important;
+  top: 20%  !important;
+  left: 50%  !important;
+  transform: translateX(-50%)  !important;
+  padding: 10px  !important;
+  border-radius: 5px  !important;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px  !important;
+}

@@ -1,0 +1,43 @@
+.details h3 {
+  text-align: left;
+}
+.description {
+  background-color: rgb(242,242,242);
+}
+input {
+  background-color: transparent ;
+
+}
+input:focus {
+  outline: none ;
+}
+.btn_comment {
+  background-color: rgb(242,242,242);
+  border: none;
+}
+.btn_cancel{
+  transition: background-color 0.4s ;
+  border: none ;
+}
+.btn_cancel:hover {
+  background-color:rgb(242,242,242);
+}
+.container-md  {
+  width: 75% ;
+}
+@media screen and (max-width: 768px)  {
+  .container-md  {
+    width: 100% ;
+  }
+}
+
+
+
+.success-message {
+  position: fixed !important;
+  top: 10%  !important;
+  right: 1%  !important;
+  padding: 10px  !important;
+  border-radius: 5px  !important;
+  z-index:99999 !important
+}

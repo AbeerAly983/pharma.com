@@ -1,0 +1,31 @@
+<<app-navbar></app-navbar>>
+  <div *ngIf="isLoading"
+    class="spinner position-fixed  w-100 h-100 d-flex justify-content-center align-items-center  mt-5 pt-5 bg-white">
+    <!-- show spinner when loading is true -->
+    <app-spinner></app-spinner>
+  </div>
+  <div class="container my-5 pt-3">
+    <div *ngIf="wishList.length === 0" class="text-center fw-bold mt-5">
+      <img class="w-100 " src="../../../assets/notFound/undraw_empty_re_opql.svg" height="550" alt="">
+    </div>
+    <div class="bg-main-light p-4 my-4" *ngIf="wishList.length > 0">
+      <h3>WishList</h3>
+      <div class="row align-items-center border-bottom py-3 " *ngFor="let product of wishList">
+        <div class="col-md-1">
+          <img class="w-100" src="assets/{{product.photo}}" alt="">
+        </div>
+        <div class="col-md-11 d-flex justify-content-between">
+          <div>
+            <h6>{{product.name}}</h6>
+            <h6 class="text-grey">Price : {{product.discount_price}}</h6>
+            <h6 class="text-grey"> {{product.price}} L.E ({{product.presentage_Discount}}%)</h6>
+            <button class="btn m-0 p-0 text-main border-0" (click)="deleteFromWishList(product.id)"> <i
+                class="fa-regular text-main fa-trash-can"></i> Remove </button>
+            <button class="btn  bg-main text-white w-100 my-2 px-3 add " (click)="addtoCart(product.id)">+ Add to Cart
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-footer></app-footer>

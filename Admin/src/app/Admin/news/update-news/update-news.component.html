@@ -1,0 +1,79 @@
+<div>
+  <div class="row m-0">
+    <div class="col-lg-3 col-1 p-0">
+      <app-sidebar-admin></app-sidebar-admin>
+    </div>
+    <div class="col-lg-9 col-11 mx-auto ">
+      <div class="container-lg box">
+
+        <div class="head-one d-flex align-items-center justify-content-between">
+          <h3>News</h3>
+          <div class="add-oc" routerLink="/admin/news/add">Add News</div>
+        </div>
+
+        <div class="back-edit" routerLink="/admin/news">
+          <i class="fa-solid fa-angles-left"></i>
+          <a style="margin-left: 5px;">Back</a>
+        </div>
+        <div class="edit-profile">
+          <h3>News</h3>
+
+
+          <form #userForm="ngForm" (ngSubmit)="onsubmit(userForm.value)" class="form" ngNativeValidate>
+
+            <div class="alert alert-success" role="alert" *ngIf="valid">
+              Your changed is updated sucessfully
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Title</label>
+              <input type="text" class="form-control input" name="title" #title="ngModel"
+                [class.is-invalid]="title.invalid && title.touched" [(ngModel)]="news.title"
+                pattern="[A-Za-z0-9 .,:'\-_]{3,}" required>
+
+              <div *ngIf="title.errors && title.touched">
+                <small class="text-danger" *ngIf="title.errors?.['required']">
+                  Please enter title
+                </small>
+                <small class="text-danger" *ngIf="title.errors?.['pattern']">
+                  Please enter valid title
+                </small>
+              </div>
+            </div>
+
+
+
+            <div class="mb-3">
+              <label class="form-label">Description</label>
+              <textarea type="text" class="form-control input" name="description" #description="ngModel"
+                [class.is-invalid]="description.invalid && description.touched" [(ngModel)]="news.description"
+                pattern="[A-Za-z0-9 .,:'\-_]{4,}" required>
+              </textarea>
+              <div *ngIf="description.errors && description.touched">
+                <small class="text-danger" *ngIf="description.errors?.['required']">
+                  Please enter description
+                </small>
+                <small class="text-danger" *ngIf="description.errors?.['pattern']">
+                  Please enter valid description</small>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Photo</label>
+              <input type="file" class="form-control" name="photo" #photo="ngModel"
+                [class.is-invalid]="photo.invalid && photo.touched" [ngModel] (change)="onPhotoSelected($event)">
+              <div *ngIf="photo.errors && photo.touched">
+                <small class="text-danger" *ngIf="photo.errors?.['pattern']">
+                  Please enter valid path of photo
+                </small>
+              </div>
+            </div>
+
+            <input type="submit" class="form-control" value="Submit">
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

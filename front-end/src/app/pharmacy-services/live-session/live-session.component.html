@@ -1,0 +1,56 @@
+<app-navbar></app-navbar>
+<div  *ngIf="isLoading"  class="spinner position-fixed  w-100 h-100 d-flex justify-content-center align-items-center  mt-5 pt-5 bg-white">
+  <app-spinner></app-spinner>
+</div>
+<div class="live">
+  <div class="container-md   my-5 pt-5  ps-5 ">
+    <div class="iframe  mt-5 ">
+      <iframe  width="100%" height="530" [src]="sanitizer.bypassSecurityTrustResourceUrl(liveDetails.url)"  title="What is Medicine?" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+    </div>
+
+    <div class="details  ">
+        <h3 class="">{{liveDetails.title}}</h3>
+      </div>
+
+      <div class="description rounded-3 p-3 mt-3">
+        <h5 class="text-left">{{liveDetails.date}} </h5>
+        <p>{{liveDetails.description}}</p>
+      </div>
+
+      <div >
+        <input class="w-100 p-2 mt-3 text-grey border-0 border-bottom border-grey" type="text" placeholder="Add a Comment " [(ngModel)]="comment" (focus)="showButtons = true" (blur)="showButtons = comment.length > 0" (keyup)="showButtons = comment.length > 0">
+        <div class="mt-3" *ngIf="showButtons " >
+
+          <button class="btn btn_comment rounded-pill me-3 text-grey" [disabled]="comment.length === 0" (click)="addComment(comment)  "  >Comment</button>
+          <button class="btn btn_cancel rounded-pill " (click)="comment = '' ; showButtons = false">Cancel</button>
+        </div>
+      </div>
+
+      <div class="results my-5"  >
+        <div class="row border-bottom border-primary py-3 " *ngFor="let comment of allComments ">
+          <div class="col-lg-1 col-md-2 col-3 " >
+            <div class="img">
+              <img class="w-100 rounded-circle p-1" src="../../../assets/{{comment.photo}}" alt="">
+            </div>
+          </div>
+          <div class="col-lg-11 col-md-10 col-9 col-">
+            <div class="data">
+              <span class="h5">{{comment.name}} </span> <span class="text-grey fs-6">1 years ago</span>
+              <p> {{comment.comment}} </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+  </div>
+</div>
+
+
+<div *ngIf="showSuccessMessage" class="success-message text-white bg-main  border-primary">
+  <i class="fa-solid fa-check"></i> Comment added Successfully!
+</div>
+
+<app-footer></app-footer>

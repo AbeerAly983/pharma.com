@@ -1,0 +1,13 @@
+input {
+  background-color: rgb(214, 230, 213) ;
+}
+input:focus {
+  outline: none ;
+}
+.dose {
+  background-color: rgb(231, 231, 231);
+}
+
+a{
+  text-decoration: none !important;
+}

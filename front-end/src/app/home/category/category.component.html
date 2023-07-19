@@ -1,0 +1,16 @@
+<!--category assmaa-->
+<div class="partner">
+  <div class="container">
+    <div class="header">
+      <h2 class="title">Popular categories</h2>
+      <a href="#" class="all-item" routerLink="/catalog">All categories</a>
+    </div>
+
+    <div class="box">
+      <div class="item" *ngFor="let item of imageArray">
+        <img class="img" src="assets/{{ item.photo }}" alt="category" />
+        <h4 class="text">{{ item.type }}</h4>
+      </div>
+    </div>
+  </div>
+</div>
